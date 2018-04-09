@@ -8,10 +8,7 @@ document.addEventListener("keyup", function (ev) {
         nextslide();
     }
     else if (ev.keyCode == 36) {
-        var current = currentslide;
-        for(var i=0; i < current; i++) {
-            prevslide();
-        }
+        goto(0);
     }
     else if (ev.keyCode == 27 || ev.keyCode == 72) {
         hideInterface();
@@ -20,10 +17,7 @@ document.addEventListener("keyup", function (ev) {
         globalView();
     }
     else if (ev.keyCode == 35) {
-        var current = allslides.length - currentslide;
-        for(var i=0; i < current; i++) {
-            nextslide();
-        }
+        goto(allslides.length-1);
     }
     
     allpoints[currentslide].classList.add('select');
