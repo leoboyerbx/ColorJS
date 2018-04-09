@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/slides.css">
+        <link rel="stylesheet" href="css/user.css">
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        <title>ColorJS</title>
+
+    </head>
+    <body onLoad="generatePoints(); generateThumbnails();">
+    <div id="globalview">
+        <header>ColorJS Slideshow</header>
+    <div class="independent"></div>
+     <!-- Thumbnails -->
+     <div id="thumblist">
+         
+        <!--  Partie générée par generate.js -->
+        
+       </div> 
+    </div>    
+      <!-- Slides -->
+       
+       <div id="slider">
+        <div id="slide0" style="background-color: #3986a8;" class="slide otop">
+            <div id="cslide0" class="slidecontent">
+                <h1>Color JS Slideshow</h1>
+                   <p> Simple JS/CSS library allowing to create simple slideshows for browsers softwares. No need to work on JavaScript, just create your code in HTML/CSS. <br>
+                    <a href="javascript:void(0);" onclick="goto(1);">Take the tour.</a>
+                </p>
+            </div>
+        </div>
+        <div id="slide1" style="background-color: #5eb968;" class="slide ibottom oleft">
+            <div id="cslide11" class="slidecontent">
+                <h1>Simple and smooth transitions</h1>
+            <p> Here is the basic thing you need to kown: just 4 transitions, like the one you've just seen. You can choose the direction the slide takes, and that's all. This alleviates the code and makes sure it will work on any device. <br>
+                <br></p>
+                <h3>How to use the transitions ?</h3>
+                <p>
+               Just define the class of the slides, for the coming: <br>
+               <code>ibottom</code> for a slide coming from the bottom. <br>
+               <code>itop</code> for a slide coming from the top. <br>
+               <code>iright</code> for a slide coming from the right. <br>
+               <code>ileft</code> for a slide coming from the left. <br>
+               <br>
+               And for the leaving:
+               <code>obottom</code> for a slide leaving to the bottom. <br>
+               <code>otop</code> for a slide leaving to the top. <br>
+               <code>oright</code> for a slide leaving to the right. <br>
+               <code>oleft</code> for a slide leaving to the left. <br>
+               <br>
+                You see ? Just  like "in" and like "out"
+                </p>
+            </div>
+        </div>
+        <div id="slide2" style="background-color: #b24c4c;" class="slide iright otop">
+            <div id="cslide21" class="slidecontent">
+                <h1 id="cslide22" class="animate">Individual animations</h1>
+                <p id="cslide23" class="animate" style="text-align: justify">
+                    Like in classic slideshow softwares (PowerPoint, Impress...), you can animate separately each element using CSS3 transform properties. <br>
+                    This feature has been designed to be simple and easy to use.
+                    <br>If you wand an element to have a separated animation, just add the <code>.animate</code> class on it. Then set this position when it's hidden: <br>
+                    <code>
+                        #element { <br></code>
+                    <code>   transform: /*transform property*/; <br></code>
+                     <code>   }
+                    </code>
+                    <br>
+                    Now use the <code>.current</code> class to define properties of the element when the slideshow is on the slide: <br>
+                    <code>
+                        #element.current { <br>
+                            tranform: /*changed property*/ <br>
+                        }
+                    </code><br>
+                    That's it!
+                    <br>
+                    <strong>Note:</strong> you can animate any CSS property but it's recommended to use <code>transform</code> properties.
+                </p>
+            </div>
+        </div>
+        <div id="slide3" style="background-color: #dea454;" class="slide ibottom oright">
+            <div class="slidecontent">
+                <h1>Slide #3</h1>
+            Lorem ipsum dolo sir amet. <br>
+            Ce descripteur définit un nom qui sera utilisé pour désigner cette police dans les différentes règles associées.
+            </div>
+        </div>
+        <div id="slide4" style="background-color: #5eb9b2;" class="slide ileft obottom">
+            <div class="slidecontent">
+                <h1>Slide #4</h1>
+            <a href="#" onclick="hideInterface();">Hehe cacher la nav</a>
+            <a href="#" onclick="showInterface();">Hehe montrer la nav</a>
+            </div>
+        </div>
+        <div id="slide5" style="background-color: #7d5eb9;" class="slide itop oleft">
+            <div class="slidecontent">
+                <h1>Slide #5</h1>
+            Lorem ipsum dolo sir amet. <br>
+            Ce descripteur définit un nom qui sera utilisé pour désigner cette police dans les différentes règles associées.
+            </div>
+        </div>
+        <div id="slide6" style="background-color: #52b45e;" class="slide iright otop">
+            <div class="slidecontent">
+                <h1>Slide #6</h1>
+            Lorem ipsum dolo sir amet. <br>
+            Ce descripteur définit un nom qui sera utilisé pour désigner cette police dans les différentes règles associées.
+            </div>
+        </div>
+        <div id="slide7" style="background-color: #d676ae;" class="slide ibottom otop">
+            <div class="slidecontent">
+                <h1>Slide #7</h1>
+            Lorem ipsum dolo sir amet. <br>
+            Ce descripteur définit un nom qui sera utilisé pour désigner cette police dans les différentes règles associées.
+            </div>
+        </div>
+     </div>
+        
+        <div id="points">
+          <!--  points générés par generate.js-->
+        </div>
+        <div id="interface">
+            
+         <span class="fa fa-th" onclick="globalView();"></span>
+         <span id="control">
+          <span class="fa fa-fast-backward" onclick="goto(0);"></span>
+         <span class="fa fa-caret-left" onclick="goto(currentslide - 1);"></span>
+         <span class="fa fa-caret-right" onclick="goto(currentslide + 1);"></span>
+         <span class="fa fa-fast-forward" onclick="goto(allslides.length - 1);"></span>
+            </span>
+         
+        </div>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/generate.js"></script>
+        <script type="text/javascript" src="js/keyboard.js"></script>
+        <script type="text/javascript" src="js/nav.js"></script>
+    </body>
+</html>

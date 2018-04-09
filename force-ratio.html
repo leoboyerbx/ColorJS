@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        <title>ColorJS</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                background-color: #000;
+            }
+            #slideshow {
+                position: absolute;
+                width: 100%;
+                left: 0;
+                top: 50%;
+            }
+        </style>
+    </head>
+    <body onload="sizing();">
+       <iframe src="index.html" frameborder="0" id="slideshow" style="transform: translateY(-50%)"></iframe>
+       
+       <script type="text/javascript">
+           window.addEventListener("resize", function () {sizing();})
+           var sizing = function() {
+               var frame = document.querySelector('#slideshow');
+               var width = frame.clientWidth;
+               var height = width * (9/16);
+               
+               var winwidth = screen.width;
+               
+               frame.height = height;
+           
+           }
+            
+        </script>
+    </body>
+</html>
