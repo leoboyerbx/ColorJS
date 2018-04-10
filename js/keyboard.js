@@ -19,9 +19,15 @@ document.addEventListener("keyup", function (ev) {
     else if (ev.keyCode == 35) {
         goto(allslides.length-1);
     }
-    
     allpoints[currentslide].classList.add('select');
-});
+    
+})
+document.addEventListener("keydown", function(ev) {
+    if(ev.ctrlKey && ev.keyCode == 80){
+        ev.preventDefault()
+        printSlideshow()
+}
+})
 
 var sliderHammer = new Hammer(slider)
 
