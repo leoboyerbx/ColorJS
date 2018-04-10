@@ -7,9 +7,9 @@
     top: 30%;
     font-size: 110%;
     color: #fff;
-    -webkit-transition: all 0.8s ease-in-out;
-    -o-transition: all 0.8s ease-in-out;
-    transition: all 0.8s ease-in-out;
+    -webkit-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
 }
 
 /*--- Slide 1 ---*/
@@ -38,4 +38,10 @@
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
     transform: translateY(0);
+}
+#cslide22.prev {
+    -webkit-transform: translateX(-200px);
+    -ms-transform: translateX(-200px);
+    -o-transform: translateX(-200px);
+    transform: translateX(-200px);
 }

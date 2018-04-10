@@ -2,10 +2,10 @@ document.addEventListener("keyup", function (ev) {
     allpoints[currentslide].classList.remove('select');
     
     if (ev.keyCode == 37 || ev.keyCode == 38) {
-        prevslide();
+        prev();
     }
     else if (ev.keyCode == 39 || ev.keyCode == 40 || ev.keyCode == 32 || ev.keyCode == 13) {
-        nextslide();
+        next();
     }
     else if (ev.keyCode == 36) {
         goto(0);

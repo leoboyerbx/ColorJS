@@ -1,7 +1,9 @@
 var slider = document.querySelector('#slider');
 var scrolling = 0; //on inistialise scrolling
 var currentslide = 0; //valeur de la slide actuelle
+var currentanimate = 0;
 var allslides = document.querySelectorAll('.slide'); //tableau contenant toutes les slides
+var allanimate = allslides[currentslide].querySelector('.animate');
 var allindependent = document.querySelectorAll('.independent');
 var timeOut1;
 var timeOut2;
@@ -15,20 +17,19 @@ slider.addEventListener("wheel", function (ev) { //si la fenetre scrolling
     allpoints[currentslide].classList.remove('select');
     scrolling = ev.deltaY; //on récupère la valeur de scrolling
     if (scrolling > 0) { //si le scrolling est vers le bas, on appelle nextslide()
-        nextslide();
-    }
-    else { //si le scrolling est vers le haut, on appelle prevslide()
-        prevslide();
+        next();
+    } else { //si le scrolling est vers le haut, on appelle prevslide()
+        prev();
     }
     allpoints[currentslide].classList.add('select');
 });
 
-document.addEventListener("mousemove", function() {
+document.addEventListener("mousemove", function () {
     window.clearTimeout(timeOut1);
     showInterface();
     timeOut1 = window.setTimeout(hideInterface, 4000);
 });
-slider.addEventListener("click", function() {
+slider.addEventListener("click", function () {
     window.clearTimeout(timeOut1);
     showInterface();
     timeOut1 = window.setTimeout(hideInterface, 4000);
@@ -41,43 +42,42 @@ slider.addEventListener("touchmove", function(ev) {
 */
 
 
-var startRemote = function() {
-  remotestate = 1;
-  
-  var httpRequest = new XMLHttpRequest();
-  var back;
-  
-  httpRequest.onreadystatechange = function () {
-    if (httpRequest.readyState === 4) {
-      back = httpRequest.responseText;
-      
-      if (back != currentslide) {
-        remoteGoto(back);
-      }
+var startRemote = function () {
+    remotestate = 1;
+
+    var httpRequest = new XMLHttpRequest();
+    var back;
+
+    httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState === 4) {
+            back = httpRequest.responseText;
+
+            if (back != currentslide) {
+                remoteGoto(back);
+            }
+
+    timeOut2 = window.setTimeout(startRemote, 200);
+        }
     }
-  }
-  httpRequest.open('GET', './remote/givestate.php', true);
-httpRequest.send();
-  
+    httpRequest.open('GET', './remote/givestate.html', true);
+    httpRequest.send();
+
     document.querySelector('#remote').classList.remove('fa-wifi');
     document.querySelector('#remote').classList.add('fa-lock');
-  
-  timeOut2 = window.setTimeout(startRemote, 200);
-  
+
+
 }
 var stopRemote = function () {
-  remotestate = 0;
+    remotestate = 0;
     window.clearTimeout(timeOut2);
     document.querySelector('#remote').classList.remove('fa-lock');
     document.querySelector('#remote').classList.add('fa-wifi');
 }
 
 var toggleRemote = function () {
-  if (remotestate == 1) {
-    stopRemote();
-  }  else {
-    startRemote();
-  }
+    if (remotestate == 1) {
+        stopRemote();
+    } else {
+        startRemote();
+    }
 }
-
-
