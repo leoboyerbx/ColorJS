@@ -81,6 +81,10 @@ header {
     margin-bottom: 5px;
     display: inline-block;
 }
+.thumbnailimage {
+    width: 100%;
+    max-height: 100%;
+}
 .thumbnail .legende {
     width: 100%;
     font-size: 90%;
@@ -113,6 +117,7 @@ header {
     left: 0;
     height: 100%;
     width: 100%;
+    font-size: 180%;
     overflow: hidden;
     font-family: "nexa", sans-serif;
     -webkit-transition: all 0.5s ease-in-out;

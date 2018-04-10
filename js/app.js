@@ -3,8 +3,7 @@ var scrolling = 0; //on inistialise scrolling
 var currentslide = 0; //valeur de la slide actuelle
 var currentanimate = 0;
 var allslides = document.querySelectorAll('.slide'); //tableau contenant toutes les slides
-var allanimate = allslides[currentslide].querySelector('.animate');
-var allindependent = document.querySelectorAll('.independent');
+var allanimate;
 var timeOut1;
 var timeOut2;
 var allpoints;
@@ -14,7 +13,6 @@ var sendSlide;
 
 slider.addEventListener("wheel", function (ev) { //si la fenetre scrolling
     ev.preventDefault(); //on empêche de retester l'événement
-    allpoints[currentslide].classList.remove('select');
     scrolling = ev.deltaY; //on récupère la valeur de scrolling
     if (scrolling > 0) { //si le scrolling est vers le bas, on appelle nextslide()
         next();
@@ -34,12 +32,14 @@ slider.addEventListener("click", function () {
     showInterface();
     timeOut1 = window.setTimeout(hideInterface, 4000);
 });
-/*
-slider.addEventListener("touchmove", function(ev) {
-    ev.preventDefault();
-    console.log(ev);
-});
-*/
+
+
+var setPoint = function (value) {
+    allpoints.forEach(function(e) {
+        e.classList.remove('select')
+    })
+    allpoints[value].classList.add('select')
+}
 
 
 var startRemote = function () {
@@ -52,21 +52,20 @@ var startRemote = function () {
         if (httpRequest.readyState === 4) {
             back = httpRequest.responseText;
 
-            if (back != currentslide) {
-                remoteGoto(back);
+            if (back != currentanimate) {
+                gotoAnimate(back);
             }
 
-    timeOut2 = window.setTimeout(startRemote, 200);
+            timeOut2 = window.setTimeout(startRemote, 200);
         }
     }
-    httpRequest.open('GET', './remote/givestate.html', true);
+    httpRequest.open('GET', './remote/givestate.php', true);
     httpRequest.send();
 
     document.querySelector('#remote').classList.remove('fa-wifi');
     document.querySelector('#remote').classList.add('fa-lock');
-
-
 }
+
 var stopRemote = function () {
     remotestate = 0;
     window.clearTimeout(timeOut2);
@@ -81,3 +80,4 @@ var toggleRemote = function () {
         startRemote();
     }
 }
+ 

@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
         <title>ColorJS</title>
 </head>
-    <body onLoad="generatePoints(); generateThumbnails();">
+    <body onLoad="generatePoints(); generateThumbnails(); generateAnimData()">
     <div id="globalview">
         <header>ColorJS Slideshow</header>
     <div class="independent"></div>
@@ -27,21 +27,21 @@
       <!-- Slides -->
        
        <div id="slider">
-        <div id="slide0" style="background-color: #3986a8;" class="slide otop">
+        <div id="caca" style="background-color: #3986a8;" class="slide otop">
             <div id="cslide0" class="slidecontent">
-                <h1>Color JS Slideshow</h1>
-                   <p> Simple JS/CSS library allowing to create simple slideshows for browsers softwares. No need to work on JavaScript, just create your code in HTML/CSS. <br>
+                <h1 class="simple" animate=0>Color JS Slideshow</h1>
+                   <p class="simple" animate=1> Simple JS/CSS library allowing to create simple slideshows for browsers softwares. No need to work on JavaScript, just create your code in HTML/CSS. <br>
                     <a href="javascript:void(0);" onclick="goto(1);">Take the tour.</a>
                 </p>
             </div>
         </div>
         <div id="slide1" style="background-color: #5eb968;" class="slide ibottom oleft">
-            <div id="cslide11" class="slidecontent">
-                <h1>Simple and smooth transitions</h1>
-            <p> Here is the basic thing you need to kown: just 4 transitions, like the one you've just seen. You can choose the direction the slide takes, and that's all. This alleviates the code and makes sure it will work on any device. <br>
+            <div id="cslide11" class="slidecontent" >
+                <h1 class="simple" animate=0 style="transition-delay: 0.5s">Simple and smooth transitions</h1>
+            <p class="simple" animate=1> Here is the basic thing you need to kown: just 4 transitions, like the one you've just seen. You can choose the direction the slide takes, and that's all. This alleviates the code and makes sure it will work on any device. <br>
                 <br></p>
-                <h3>How to use the transitions ?</h3>
-                <p>
+                <h3 class="simple" animate=2>How to use the transitions ?</h3>
+                <p class="simple" animate=2>
                Just define the class of the slides, for the coming: <br>
                <code>ibottom</code> for a slide coming from the bottom. <br>
                <code>itop</code> for a slide coming from the top. <br>
@@ -60,8 +60,8 @@
         </div>
         <div id="slide2" style="background-color: #b24c4c;" class="slide iright otop">
             <div id="cslide21" class="slidecontent">
-                <h1 id="cslide22" class="animate anim0">Individual animations</h1>
-                <p id="cslide23" class="animate anim1" style="text-align: justify">
+                <h1 id="cslide22" class="simple" animate=0 style="transition-delay: 0.5s">Individual animations</h1>
+                <p id="cslide23" class="simple" animate=1 style="text-align: justify">
                     Like in classic slideshow softwares (PowerPoint, Impress...), you can animate separately each element using CSS3 transform properties. <br>
                     This feature has been designed to be simple and easy to use.
                     <br>If you wand an element to have a separated animation, just add the <code>.animate</code> class on it. Then set this position when it's hidden: <br>
@@ -128,13 +128,14 @@
          <span class="fa fa-th" onclick="globalView();"></span>
          <span id="control">
           <span class="fa fa-fast-backward" onclick="goto(0);"></span>
-         <span class="fa fa-caret-left" onclick="goto(currentslide - 1);"></span>
-         <span class="fa fa-caret-right" onclick="goto(currentslide + 1);"></span>
+         <span class="fa fa-caret-left" onclick="prev()"></span>
+         <span class="fa fa-caret-right" onclick="next()"></span>
          <span class="fa fa-fast-forward" onclick="goto(allslides.length - 1);"></span>
          <span class="fa fa-wifi" id="remote" onclick="toggleRemote();"></span>
             </span>
          
         </div>
+        <script type="text/javascript" src="js/hammer.min.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
         <script type="text/javascript" src="js/generate.js"></script>
         <script type="text/javascript" src="js/keyboard.js"></script>

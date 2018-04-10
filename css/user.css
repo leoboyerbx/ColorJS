@@ -12,6 +12,7 @@
     transition: all 0.5s ease-out;
 }
 
+
 /*--- Slide 1 ---*/
 #cslide11 {
     top: 10%;
@@ -45,3 +46,4 @@
     -o-transform: translateX(-200px);
     transform: translateX(-200px);
 }
+

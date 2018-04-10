@@ -22,3 +22,13 @@ document.addEventListener("keyup", function (ev) {
     
     allpoints[currentslide].classList.add('select');
 });
+
+var sliderHammer = new Hammer(slider)
+
+sliderHammer
+  .on('swiperight', function () {
+  prev()
+})
+  .on('swipeleft', function () {
+  next()
+})
