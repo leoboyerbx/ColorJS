@@ -4,46 +4,15 @@
     text-align: center;
     left: 15%;
     width: 70%;
-    top: 30%;
-    font-size: 110%;
+    top: 50%;
     color: #fff;
+    transform: translateY(-50%);
     -webkit-transition: all 0.5s ease-out;
     -o-transition: all 0.5s ease-out;
     transition: all 0.5s ease-out;
 }
 
-
-/*--- Slide 1 ---*/
-#cslide11 {
-    top: 10%;
+#home {
+    background: url(../img/colorjs.jpg) center center;
+    background-size: cover;
 }
-
-/*--- Slide 2 ---*/
-#cslide21 {
-    top: 15%;
-}
-#cslide22 {
-    -webkit-transform: translateY(-30vh);
-    -ms-transform: translateY(-30vh);
-    -o-transform: translateY(-30vh);
-    transform: translateY(-30vh);
-}
-#cslide23 {
-    -webkit-transform: translateY(80vh);
-    -ms-transform: translateY(80vh);
-    -o-transform: translateY(80vh);
-    transform: translateY(80vh);
-}
-#cslide22.current, #cslide23.current {
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0);
-}
-#cslide22.prev {
-    -webkit-transform: translateX(-200px);
-    -ms-transform: translateX(-200px);
-    -o-transform: translateX(-200px);
-    transform: translateX(-200px);
-}
-

@@ -10,7 +10,13 @@
         <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/slides.css">
         <link rel="stylesheet" href="css/user.css">
+        <link rel="stylesheet" href="css/impression.css" media="print">
+
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway|Source+Sans+Pro">
+        <link rel="stylesheet" href="https://www.leoboyer.fr/css/backhome.css">
+
+
         <title>ColorJS</title>
 </head>
     <body onLoad="generatePoints(); generateThumbnails(); generateAnimData()">
@@ -27,40 +33,37 @@
       <!-- Slides -->
        
        <div id="slider">
-        <div id="caca" style="background-color: #3986a8;" class="slide otop">
+        <div id="home" class="slide otop">
             <div id="cslide0" class="slidecontent">
-                <h1 class="simple" animate=0>Color JS Slideshow</h1>
-                   <p class="simple" animate=1> Simple JS/CSS library allowing to create simple slideshows for browsers softwares. No need to work on JavaScript, just create your code in HTML/CSS. <br>
-                    <a href="javascript:void(0);" onclick="goto(1);">Take the tour.</a>
+                <h1 class="simple" animate=0>Color JS</h1>
+                   <p class="simple" style="transition-delay: 1s" animate=0>Une simple librairie pour créer des diaporamas en HTML/CSS, de manière simple<br> <br>
+                    <a href="javascript:void(0);" onclick="goto(1);">Visite guidée</a>
                 </p>
             </div>
         </div>
-        <div id="slide1" style="background-color: #5eb968;" class="slide ibottom oleft">
-            <div id="cslide11" class="slidecontent" >
-                <h1 class="simple" animate=0 style="transition-delay: 0.5s">Simple and smooth transitions</h1>
-            <p class="simple" animate=1> Here is the basic thing you need to kown: just 4 transitions, like the one you've just seen. You can choose the direction the slide takes, and that's all. This alleviates the code and makes sure it will work on any device. <br>
+        <div id="slide1" style="background-color: #2993ad;" class="slide ibottom oleft">
+            <div class="slidecontent" >
+                <h1 class="simple" animate=0 style="transition-delay: 0.5s">Des transitions simples et fluides</h1>
+            <p class="simple" animate=1> Chaque diapositive est définie par la classe <code>slide</code>. VOus pouvez ensuite y ajouter de simples transitions <br>
                 <br></p>
-                <h3 class="simple" animate=2>How to use the transitions ?</h3>
+                <h3 class="simple" animate=2>Comment utiliser les transitions ?</h3>
                 <p class="simple" animate=2>
-               Just define the class of the slides, for the coming: <br>
-               <code>ibottom</code> for a slide coming from the bottom. <br>
-               <code>itop</code> for a slide coming from the top. <br>
-               <code>iright</code> for a slide coming from the right. <br>
-               <code>ileft</code> for a slide coming from the left. <br>
+               Il suffit d'utiliser ces classes:<br>
+               <code>ibottom</code> pour une entrée depuis le bas <br>
+               <code>itop</code> pour une entrée depuis le haut<br>
+               <code>iright</code> pour une entrée depuis la droite<br>
+               <code>ileft</code> pour une entrée depuis la gauche<br>
                <br>
-               And for the leaving:
-               <code>obottom</code> for a slide leaving to the bottom. <br>
-               <code>otop</code> for a slide leaving to the top. <br>
-               <code>oright</code> for a slide leaving to the right. <br>
-               <code>oleft</code> for a slide leaving to the left. <br>
+               De même pour les transitions sortantes:
+               <code>obottom</code>, <code>otop</code>, <code>oright</code> et <code>oleft</code>
                <br>
-                You see ? Just  like "in" and like "out"
+                "i" et "o" comme "In" et "Out" !
                 </p>
             </div>
         </div>
         <div id="slide2" style="background-color: #b24c4c;" class="slide iright otop">
             <div id="cslide21" class="slidecontent">
-                <h1 id="cslide22" class="simple" animate=0 style="transition-delay: 0.5s">Individual animations</h1>
+                <h1 id="cslide22" class="simple" animate=0 style="transition-delay: 0.5s">Animations individuelles</h1>
                 <p id="cslide23" class="simple" animate=1 style="text-align: justify">
                     Like in classic slideshow softwares (PowerPoint, Impress...), you can animate separately each element using CSS3 transform properties. <br>
                     This feature has been designed to be simple and easy to use.
@@ -140,5 +143,8 @@
         <script type="text/javascript" src="js/generate.js"></script>
         <script type="text/javascript" src="js/keyboard.js"></script>
         <script type="text/javascript" src="js/nav.js"></script>
+
+        <a href="https://leoboyer.fr/#creations/web/colorjs">
+        <div class="back-button">← Retour sur <span>leoboyer.fr</span></div></a>
     </body>
 </html>
