@@ -215,7 +215,9 @@ header {
     font-size: 0;
 }
 
-
+.notransition {
+    transition: none;
+}
 
 
 @font-face {

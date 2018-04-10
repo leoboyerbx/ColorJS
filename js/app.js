@@ -81,3 +81,13 @@ var toggleRemote = function () {
     }
 }
  
+var printSlideshow = function() {
+    goto(0)
+    document.querySelectorAll("[animate]").forEach(function(e) {
+        e.classList.add('notransition')
+        e.classList.add('current')
+    })
+
+    window.print()
+
+}
