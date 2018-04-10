@@ -13,7 +13,6 @@
         <link rel="stylesheet" href="css/impression.css" media="print">
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 
-
         <title>ColorJS</title>
 </head>
     <body onLoad="generatePoints(); generateThumbnails(); generateAnimData()">
@@ -45,7 +44,7 @@
                 <br></p>
                 <h3 class="simple" animate=2>Comment utiliser les transitions ?</h3>
                 <p class="simple" animate=2>
-               Il suffit d'utiliser ces classes:<br>
+               Il suffit d'utiliser ces classes: <br>
                <code>ibottom</code> pour une entrée depuis le bas <br>
                <code>itop</code> pour une entrée depuis le haut<br>
                <code>iright</code> pour une entrée depuis la droite<br>
@@ -131,8 +130,9 @@
          <span class="fa fa-caret-left" onclick="prev()"></span>
          <span class="fa fa-caret-right" onclick="next()"></span>
          <span class="fa fa-fast-forward" onclick="goto(allslides.length - 1);"></span>
+         <span class="fa fa-print" onclick="printSlideshow()"></span>
          <span class="fa fa-wifi" id="remote" onclick="toggleRemote();" style="display: none;"></span>
-            </span>
+        </span>
          
         </div>
         <script type="text/javascript" src="js/hammer.min.js"></script>
