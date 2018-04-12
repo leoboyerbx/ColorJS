@@ -88,6 +88,15 @@
     -o-transition-delay: .3s;
     transition-delay: .3s;
 }
+/*=============== Stay ==============*/
+.ostay.prev {
+    opacity: 1;
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    transform: translate(0,0);
+}
+
 
 
 /*=============== All ==============*/
