@@ -16,6 +16,8 @@
     width: 16in;
     height: 9in;
     transform: translate(0,0);
+    opacity: 1;
+    visibility: visible;
 }
 
 body {
