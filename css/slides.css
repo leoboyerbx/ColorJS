@@ -2,6 +2,9 @@
 #slider {
     perspective: 1000px;
 }
+
+
+/*=============== Classic ===============*/
 /*=============== ↑ Bottom to top ↑ ===============*/
 
 .ibottom {
@@ -73,6 +76,43 @@
     -o-transform: translate(20%, 0);
     transform: translate(20%, 0);
 }
+
+
+/*=============== Push===============*/
+/*=============== ↑ Bottom to top ↑ ===============*/
+
+.opushtop.prev {    
+    -webkit-transform: translate(0, -100%);
+    -ms-transform: translate(0, -100%);
+    -o-transform: translate(0, -100%);
+    transform: translate(0, -100%);
+}
+
+/*=============== ← Right to Left ← ==============*/
+
+.opushleft.prev {
+    -webkit-transform: translate(-100%, 0);
+    -ms-transform: translate(-100%, 0);
+    -o-transform: translate(-100%, 0);
+    transform: translate(-100%, 0);
+}
+
+/*=============== ↓ Top to bottom ↓ ==============*/
+.opushbottom.prev {
+    -webkit-transform: translate(0, 100%);
+    -ms-transform: translate(0, 100%);
+    -o-transform: translate(0, 100%);
+    transform: translate(0, 100%);
+}
+
+/*=============== → Left To Right → ==============*/
+.opushright.prev {
+    -webkit-transform: translate(100%, 0);
+    -ms-transform: translate(100%, 0);
+    -o-transform: translate(100%, 0);
+    transform: translate(100%, 0);
+}
+
 
 
 /*=============== Fade ==============*/
