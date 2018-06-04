@@ -15,4 +15,4 @@ For example if you have only 3 `div` with the class `slide` in your HTML documen
 Now if you want an element to appear only when you want, you can add the attribute `animate=1` for example, and the script will make this element appear at the first click after the begenning of the slide.
 
 ## How to use it
-To learn how to create your slideshow, go on readthedocs ;)
+To learn how to create your slideshow, go on [readthedocs](https://colorjs.readthedocs.io/en/latest/) ;)
