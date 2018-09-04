@@ -1,3 +1,6 @@
+let Hammer = require('./hammer.min.js')
+
+
 var slider = document.querySelector('#slider');
 var scrolling = 0; //on inistialise scrolling
 var currentslide = 0; //valeur de la slide actuelle
