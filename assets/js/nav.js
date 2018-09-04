@@ -37,7 +37,7 @@ var next = function (bypass) {
                     allslides[currentslide].classList.add('prev')
                     allslides[currentslide].classList.remove('current')
                     currentslide++;
-                    setPoint(currentslide)
+                    slideShow.setPoint(currentslide)
                 }
             })
             currentanimate++;
@@ -64,7 +64,7 @@ var prev = function (bypass) {
                     allslides[currentslide - 1].classList.add('current')
                     allslides[currentslide - 1].classList.remove('prev')
                     currentslide--;
-                    setPoint(currentslide)
+                    slideShow.setPoint(currentslide)
                 }
 
             })
