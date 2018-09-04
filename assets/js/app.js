@@ -1,17 +1,14 @@
-let Hammer = require('./hammer.min.js')
+import Hammer from './hammer.min.js'
+let qS = require('./modules/querySelector')
 
-
-var slider = document.querySelector('#slider');
-var scrolling = 0; //on inistialise scrolling
-var currentslide = 0; //valeur de la slide actuelle
-var currentanimate = 0;
-var allslides = document.querySelectorAll('.slide'); //tableau contenant toutes les slides
-var allanimate;
-var timeOut1;
-var timeOut2;
-var allpoints;
-var remotestate = 0;
-var sendSlide;
+let slider = qS('#slider')
+let allSlides = qS('.slide')
+let allanimate
+let scrolling = currentSlide = currentAnimate = remoteState = 0
+let timeOut1
+let timeOut2
+let allpoints
+let sendSlide
 
 
 slider.addEventListener("wheel", function (ev) { //si la fenetre scrolling
@@ -37,7 +34,7 @@ slider.addEventListener("click", function () {
 });
 
 
-var setPoint = function (value) {
+let setPoint = function (value) {
     allpoints.forEach(function(e) {
         e.classList.remove('select')
     })
@@ -45,11 +42,11 @@ var setPoint = function (value) {
 }
 
 
-var startRemote = function () {
+let startRemote = function () {
     remotestate = 1;
 
-    var httpRequest = new XMLHttpRequest();
-    var back;
+    let httpRequest = new XMLHttpRequest();
+    let back;
 
     httpRequest.onreadystatechange = function () {
         if (httpRequest.readyState === 4) {
@@ -69,14 +66,14 @@ var startRemote = function () {
     document.querySelector('#remote').classList.add('fa-lock');
 }
 
-var stopRemote = function () {
+let stopRemote = function () {
     remotestate = 0;
     window.clearTimeout(timeOut2);
     document.querySelector('#remote').classList.remove('fa-lock');
     document.querySelector('#remote').classList.add('fa-wifi');
 }
 
-var toggleRemote = function () {
+let toggleRemote = function () {
     if (remotestate == 1) {
         stopRemote();
     } else {
@@ -84,7 +81,7 @@ var toggleRemote = function () {
     }
 }
  
-var printSlideshow = function() {
+let printSlideshow = function() {
     goto(0)
     document.querySelectorAll("[animate]").forEach(function(e) {
         e.classList.add('notransition')
