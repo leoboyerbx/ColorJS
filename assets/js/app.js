@@ -1,13 +1,13 @@
 import Hammer from './hammer.min.js'
 import qS from './modules/querySelector'
 import Nav from './modules/nav'
-
 let slideShow = {
     'slider': qS('#slider'),
     'scrolling': 0,
     'currentSlide': 0,
     'currentAnimate': 0,
     'allSlides': qS('.slide'),
+    'allAnimate': document.querySelectorAll('[anim-data]'),
     'remoteState': 0,
 
     setPoint: function (value) {
@@ -17,6 +17,7 @@ let slideShow = {
         this.allPoints[value].classList.add('select')
     }
 }
+Nav.init(slideShow)
 
 
 
@@ -24,22 +25,22 @@ slideShow.slider.addEventListener("wheel", function (ev) { //si la fenetre scrol
     ev.preventDefault(); //on empêche de retester l'événement
     slideShow.scrolling = ev.deltaY; //on récupère la valeur de scrolling
     if (slideShow.scrolling > 0) { //si le scrolling est vers le bas, on appelle nextslide()
-        Nav.next(slideShow);
+        slideShow.next();
     } else { //si le scrolling est vers le haut, on appelle prevslide()
-        Nav.prev(slideShow);
+        slideShow.prev();
     }
     slideShow.allPoints[slideShow.currentSlide].classList.add('select');
 });
 
 document.addEventListener("mousemove", function () {
     window.clearTimeout(slideShow.timeOut1);
-    Nav.showInterface();
-    slideShow.timeOut1 = window.setTimeout(Nav.hideInterface, 4000);
+    slideShow.showInterface();
+    slideShow.timeOut1 = window.setTimeout(slideShow.hideInterface, 4000);
 });
 slideShow.slider.addEventListener("click", function () {
     window.clearTimeout(slideShow.timeOut1);
-    Nav.showInterface();
-    slideShow.timeOut1 = window.setTimeout(Nav.hideInterface, 4000);
+    slideShow.showInterface();
+    slideShow.timeOut1 = window.setTimeout(slideShow.hideInterface, 4000);
 });
 
 
@@ -55,7 +56,7 @@ let startRemote = function () {
             back = httpRequest.responseText;
 
             if (back != slideShow.currentAnimate) {
-                Nav.gotoAnimate(slideShow, back);
+                slideShow.gotoAnimate(back);
             }
 
             slideShow.timeOut2 = window.setTimeout(startRemote, 200);
@@ -84,7 +85,7 @@ let toggleRemote = function () {
 }
  
 let printSlideshow = function() {
-    Nav.goto(slideShow, 0)
+    slideShow.goto(0)
     document.querySelectorAll("[animate]").forEach(function(e) {
         e.classList.add('notransition')
         e.classList.add('current')
@@ -102,7 +103,7 @@ let generatePoints = function () {
     }
     document.querySelector('#points').innerHTML = text;
     slideShow.allPoints = document.querySelectorAll('.point');
-    slideShow.timeOut1 = window.setTimeout(Nav.hideInterface, 2000);
+    slideShow.timeOut1 = window.setTimeout(slideShow.hideInterface, 2000);
 }
 let generateThumbnails = function() {
     let thumbnails = "";
@@ -151,29 +152,29 @@ let generateAnimData = function () {
     }
 
     document.querySelectorAll('[anim-data="0"]').forEach(function (el) {el.classList.add('current')})
-    slideShow.allAnimate = document.querySelectorAll('[anim-data]');
+    slideShow.allAnimate = document.querySelectorAll('[anim-data]')
 }
 
 document.addEventListener("keyup", function (ev) {
     slideShow.allPoints[slideShow.currentSlide].classList.remove('select');
     
     if (ev.keyCode == 37 || ev.keyCode == 38) {
-        Nav.prev(slideShow);
+        slideShow.prev();
     }
     else if (ev.keyCode == 39 || ev.keyCode == 40 || ev.keyCode == 32 || ev.keyCode == 13) {
-        Nav.next(slideShow);
+        slideShow.next();
     }
     else if (ev.keyCode == 36) {
-        Nav.goto(slideShow, 0);
+        slideShow.goto(0);
     }
     else if (ev.keyCode == 27 || ev.keyCode == 72) {
-        Nav.hideInterface();
+        slideShow.hideInterface();
     }
     else if (ev.keyCode == 115) {
-        Nav.globalView(slideShow);
+        slideShow.globalView();
     }
     else if (ev.keyCode == 35) {
-        Nav.goto(slideShow, slideShow.allSlides.length-1);
+        slideShow.goto(slideShow.allSlides.length-1);
     }
     slideShow.allPoints[slideShow.currentSlide].classList.add('select');
     
@@ -189,10 +190,10 @@ let sliderHammer = new Hammer(slideShow.slider)
 
 sliderHammer
   .on('swiperight', function () {
-  Nav.prev(slideShow)
+  slideShow.prev()
 })
   .on('swipeleft', function () {
-  Nav.next(slideShow)
+  slideShow.next()
 })
 
 

@@ -1,117 +1,125 @@
 import qS from './querySelector';
 
 class Nav {
-    static next (slideShow, bypass) {
-        if (slideShow.currentAnimate == slideShow.allAnimate.length - 1) { //évite de chercher à dépasser le nombre de slides
-            return false;
+    /**
+     * Initialiser les fonctions de navigation
+     * @param {Object} slideShow 
+     */
+    static init(slideShow) {
+        slideShow.next = function(bypass) {
+        if (this.remoteState === 1 && !bypass) {
+            let xhr = new XMLHttpRequest();
+            xhr.open('GET', './remote/changestate.php?set=' + (this.currentAnimate + 1), true)
+            xhr.send()
         } else {
-            if (slideShow.remoteState === 1 && !bypass) {
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', './remote/changestate.php?set=' + (slideShow.currentAnimate + 1), true)
-                xhr.send()
-            } else {
-                var animElements = qS('[anim-data="' + parseInt(slideShow.currentAnimate + 1) + '"]', true)
-    
-                animElements.forEach(function (e) {
+            let animElements = qS('[anim-data="' + parseInt(this.currentAnimate + 1) + '"]', true)
+            if (animElements) {
+                for(let i = 0; i < animElements.length; i++) {
+                    let e = animElements[i]
                     e.classList.add('current')
-    
                     if (e.classList.contains('slide')) {
-                        slideShow.allSlides[slideShow.currentSlide].classList.add('prev')
-                        slideShow.allSlides[slideShow.currentSlide].classList.remove('current')
-                        slideShow.currentSlide++;
-                        slideShow.setPoint(slideShow.currentSlide)
+                        this.allSlides[this.currentSlide].classList.add('prev')
+                        this.allSlides[this.currentSlide].classList.remove('current')
+                        this.currentSlide++;
+                        this.setPoint(this.currentSlide)
                     }
-                })
-                slideShow.currentAnimate++;
-            }
-        }
-    }
-    static prev (slideShow, bypass) {
-        if (slideShow.currentAnimate === 0) { //évite de chercher à dépasser le nombre de slides
-            return false;
-    
-        } else {
-            if (slideShow.remoteState === 1 && !bypass) {
-                let xhr = new XMLHttpRequest();
-                xhr.open('GET', './remote/changestate.php?set=' + (slideShow.currentAnimate - 1), true)
-                xhr.send()
-            } else {
-                let animElements = qS('[anim-data="' + parseInt(slideShow.currentAnimate) + '"]', true)
-    
-                animElements.forEach(function (e) {
-                    e.classList.remove('current')
-    
-                    if (e.classList.contains('slide')) {
-                        slideShow.allSlides[slideShow.currentSlide - 1].classList.add('current')
-                        slideShow.allSlides[slideShow.currentSlide - 1].classList.remove('prev')
-                        slideShow.currentSlide--;
-                        slideShow.setPoint(slideShow.currentSlide)
-                    }
-    
-                })
-                slideShow.currentAnimate--;
-            }
-        }
-    }
-    static goto (slideShow, num) {
-        if (num == slideShow.currentSlide) {
-            return false;
-        } else {
-            let start = slideShow.currentAnimate;
-            let end = parseInt(slideShow.allSlides[num].getAttribute('anim-data'))
-            while (slideShow.currentAnimate != end) {
-                if (start - end < 0) {
-                    this.next(slideShow, 1)
                 }
-                else {
-                    this.prev(slideShow, 1)
-                }
-            }
-            slideShow.currentSlide = num;
-            if(slideShow.remoteState === 1) {
-                let xhr = new XMLHttpRequest();
-                xhr.open('GET', './remote/changestate.php?set=' + (slideShow.currentAnimate), true)
-                xhr.send()
-            }
-        }
-    }
-    static gotoAnimate (slideShow ,num) {
-        if (num == slideShow.currentAnimate) {
-            return false;
-        } else {
-            let start = slideShow.currentAnimate;
-            let end = num
-            while (slideShow.currentAnimate != end) {
-                if (start - end < 0) {
-                    this.next(slideShow, 1)
-                }
-                else {
-                    this.prev(slideShow, 1)
-                }
+                this.currentAnimate++;
             }
         }
     }
 
-    static hideInterface () {
-        qS('#points').classList.add('hidden');
-        qS('#interface').classList.add('hidden');
-        document.body.classList.add('nocursor');
-    }
-    static showInterface () {
-        qS('#points').classList.remove('hidden');
-        qS('#interface').classList.remove('hidden');
-        document.body.classList.remove('nocursor');
-    }
-    static globalView (slideShow) {
-        slideShow.slider.classList.toggle('globalview')
-        for (let i = 0; i < slideShow.allSlides.length; i++) {
-            slideShow.allSlides[i].classList.toggle('hidden')
+        slideShow.prev = function(bypass) {
+            if (this.currentAnimate === 0) { //évite de chercher à dépasser le nombre de slides
+                return false;
+        
+            } else {
+                if (this.remoteState === 1 && !bypass) {
+                    let xhr = new XMLHttpRequest();
+                    xhr.open('GET', './remote/changestate.php?set=' + (this.currentAnimate - 1), true)
+                    xhr.send()
+                } else {
+                    let animElements = qS('[anim-data="' + parseInt(this.currentAnimate) + '"]', true)
+        
+                    for(let i = 0; i < animElements.length; i++) {
+                        let e = animElements[i]
+                        e.classList.remove('current')
+        
+                        if (e.classList.contains('slide')) {
+                            this.allSlides[this.currentSlide - 1].classList.add('current')
+                            this.allSlides[this.currentSlide - 1].classList.remove('prev')
+                            this.currentSlide--;
+                            this.setPoint(this.currentSlide)
+                        }
+        
+                    }
+                    this.currentAnimate--;
+                }
+            }
         }
-        qS('#points').classList.toggle('globalview')
-        qS('#interface').classList.toggle('globalview')
-        qS('#control').classList.toggle('globalview')
-        document.querySelector('#interface span').classList.toggle('fa-play-circle-o')
-        window.clearTimeout(slideShow.timeOut1);
+
+        slideShow.goto = function(num) {
+            if (num == this.currentSlide) {
+                return false;
+            } else {
+                let start = this.currentAnimate
+                let end = parseInt(this.allSlides[num].getAttribute('anim-data'))
+                while (this.currentAnimate != end) {
+                    if (start - end < 0) {
+                        this.next(1)
+                    }
+                    else {
+                        this.prev(1)
+                    }
+                }
+                this.currentSlide = num;
+                if(this.remoteState === 1) {
+                    let xhr = new XMLHttpRequest();
+                    xhr.open('GET', './remote/changestate.php?set=' + (this.currentAnimate), true)
+                    xhr.send()
+                }
+            }
+        }
+
+        slideShow.gotoAnimate = function(num) {
+            if (num == slideShow.currentAnimate) {
+                return false;
+            } else {
+                let start = this.currentAnimate;
+                let end = num
+                while (this.currentAnimate != end) {
+                    if (start - end < 0) {
+                        this.next(this, 1)
+                    }
+                    else {
+                        this.prev(this, 1)
+                    }
+                }
+            }
+        }
+
+        slideShow.hideInterface = function() {
+            qS('#points').classList.add('hidden');
+            qS('#interface').classList.add('hidden');
+            document.body.classList.add('nocursor');
+        }
+        slideShow.showInterface = function () {
+            qS('#points').classList.remove('hidden');
+            qS('#interface').classList.remove('hidden');
+            document.body.classList.remove('nocursor');
+        }
+
+        slideShow.globalView = function() {
+            this.slider.classList.toggle('globalview')
+            for (let i = 0; i < this.allSlides.length; i++) {
+                this.allSlides[i].classList.toggle('hidden')
+            }
+            qS('#points').classList.toggle('globalview')
+            qS('#interface').classList.toggle('globalview')
+            qS('#control').classList.toggle('globalview')
+            document.querySelector('#interface span').classList.toggle('fa-play-circle-o')
+            window.clearTimeout(this.timeOut1);
+        }
     }
 }
 
