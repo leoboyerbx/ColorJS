@@ -95,8 +95,8 @@
         <div id="slide4" style="background-color: #5eb9b2;" class="slide ileft obottom">
             <div class="slidecontent">
                 <h1>Slide #4</h1>
-            <a href="#" onclick="hideInterface();">Hehe cacher la nav</a>
-            <a href="#" onclick="showInterface();">Hehe montrer la nav</a>
+            <a href="#" onclick="window.slideShow.hideInterface();">Hehe cacher la nav</a>
+            <a href="#" onclick="window.slideShow.showInterface();">Hehe montrer la nav</a>
             </div>
         </div>
         <div id="slide5" style="background-color: #7d5eb9;" class="slide itop oleft">
@@ -127,23 +127,18 @@
         </div>
         <div id="interface" class="material">
             
-         <span class="fa fa-th" onclick="globalView();"></span>
+         <span class="fa fa-th" onclick="window.slideShow.globalView();"></span>
          <span id="control">
-          <span class="fa fa-fast-backward" onclick="goto(0);"></span>
-         <span class="fa fa-caret-left" onclick="prev()"></span>
-         <span class="fa fa-caret-right" onclick="next()"></span>
-         <span class="fa fa-fast-forward" onclick="goto(allslides.length - 1);"></span>
-         <span class="fa fa-print" onclick="printSlideshow()"></span>
-         <span class="fa fa-wifi" id="remote" onclick="toggleRemote();" style="display: none;"></span>
+          <span class="fa fa-fast-backward" onclick="window.slideShow.goto(0);"></span>
+         <span class="fa fa-caret-left" onclick="window.slideShow.prev()"></span>
+         <span class="fa fa-caret-right" onclick="window.slideShow.next()"></span>
+         <span class="fa fa-fast-forward" onclick="window.slideShow.goto(allslides.length - 1);"></span>
+         <span class="fa fa-print" onclick="window.slideShow.printSlideshow()"></span>
+         <span class="fa fa-wifi" id="remote" onclick="window.slideShow.toggleRemote();" style="display: none;"></span>
         </span>
          
         </div>
-        <!-- <script type="text/javascript" src="assets/js/hammer.min.js"></script> -->
-        <!-- <script type="text/javascript" src="assets/js/app.js"></script> -->
         <script src="dist/bundle.js"></script>
-        <!-- <script type="text/javascript" src="assets/js/generate.js"></script> -->
-        <!-- <script type="text/javascript" src="assets/js/keyboard.js"></script> -->
-        <!-- <script type="text/javascript" src="assets/js/nav.js"></script> -->
         
 
     </body>
