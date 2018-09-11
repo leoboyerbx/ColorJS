@@ -132,9 +132,9 @@
           <span class="fa fa-fast-backward" onclick="window.slideShow.goto(0);"></span>
          <span class="fa fa-caret-left" onclick="window.slideShow.prev()"></span>
          <span class="fa fa-caret-right" onclick="window.slideShow.next()"></span>
-         <span class="fa fa-fast-forward" onclick="window.slideShow.goto(allslides.length - 1);"></span>
-         <span class="fa fa-print" onclick="window.slideShow.printSlideshow()"></span>
-         <span class="fa fa-wifi" id="remote" onclick="window.slideShow.toggleRemote();" style="display: none;"></span>
+         <span class="fa fa-fast-forward" onclick="window.slideShow.goto(window.slideShow.allSlides.length - 1)"></span>
+         <span class="fa fa-print" onclick="window.slideShow.print()"></span>
+         <span class="fa fa-wifi" id="remote" onclick="window.slideShow.remote.start();" style="display: none"></span>
         </span>
          
         </div>
