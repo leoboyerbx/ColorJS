@@ -7,18 +7,18 @@
         <meta name="description" content="">
         <meta name="author" content="">
         
-        <link rel="stylesheet" href="assets/css/global.css">
-        <link rel="stylesheet" href="assets/css/slides.css">
-        <link rel="stylesheet" href="assets/css/user.css">
-        <link rel="stylesheet" href="assets/css/print.css" media="print">
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/slides.css">
+        <link rel="stylesheet" href="css/user.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
 
-        <link href="assets/fontawesome/css/fontawesome-all.css" rel="stylesheet">
-        <link href="assets/fonts/nexa.css" rel="stylesheet">
+        <link href="fontawesome/css/fontawesome-all.css" rel="stylesheet">
+        <link href="font/nexa.css" rel="stylesheet">
 
 
         <title>ColorJS</title>
 </head>
-    <body>
+    <body onLoad="generatePoints(); generateThumbnails(); generateAnimData()">
     <div id="globalview">
         <header>ColorJS Slideshow</header>
     <div class="independent"></div>
@@ -36,7 +36,7 @@
             <div id="cslide0" class="slidecontent">
                 <h1 class="simple" animate=0>Color JS</h1>
                    <p class="simple" style="transition-delay: 1s" animate=0>Une simple librairie pour créer des diaporamas en HTML/CSS, de manière simple<br> <br>
-                    <a href="javascript:void(0);" id="tb1">Visite guidée</a>
+                    <a href="javascript:void(0);" onclick="goto(1);">Visite guidée</a>
                 </p>
             </div>
         </div>
@@ -95,8 +95,8 @@
         <div id="slide4" style="background-color: #5eb9b2;" class="slide ileft obottom">
             <div class="slidecontent">
                 <h1>Slide #4</h1>
-            <a href="#" onclick="window.slideShow.hideInterface();">Hehe cacher la nav</a>
-            <a href="#" onclick="window.slideShow.showInterface();">Hehe montrer la nav</a>
+            <a href="#" onclick="hideInterface();">Hehe cacher la nav</a>
+            <a href="#" onclick="showInterface();">Hehe montrer la nav</a>
             </div>
         </div>
         <div id="slide5" style="background-color: #7d5eb9;" class="slide itop oleft">
@@ -125,21 +125,24 @@
         <div id="points">
           <!--  points générés par generate.js-->
         </div>
-        <div id="interface" class="material">
+        <div id="interface">
             
-         <span class="fa fa-th" onclick="window.slideShow.globalView();"></span>
+         <span class="fa fa-th" onclick="globalView();"></span>
          <span id="control">
-          <span class="fa fa-fast-backward" onclick="window.slideShow.goto(0);"></span>
-         <span class="fa fa-caret-left" onclick="window.slideShow.prev()"></span>
-         <span class="fa fa-caret-right" onclick="window.slideShow.next()"></span>
-         <span class="fa fa-fast-forward" onclick="window.slideShow.goto(window.slideShow.allSlides.length - 1)"></span>
-         <span class="fa fa-print" onclick="window.slideShow.print()"></span>
-         <span class="fa fa-wifi" id="remote" onclick="window.slideShow.remote.start();" style="display: none"></span>
+          <span class="fa fa-fast-backward" onclick="goto(0);"></span>
+         <span class="fa fa-caret-left" onclick="prev()"></span>
+         <span class="fa fa-caret-right" onclick="next()"></span>
+         <span class="fa fa-fast-forward" onclick="goto(allslides.length - 1);"></span>
+         <span class="fa fa-print" onclick="printSlideshow()"></span>
+         <span class="fa fa-wifi" id="remote" onclick="toggleRemote();" style="display: none;"></span>
         </span>
          
         </div>
-        <script src="dist/bundle.js"></script>
-        
+        <script type="text/javascript" src="js/hammer.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/generate.js"></script>
+        <script type="text/javascript" src="js/keyboard.js"></script>
+        <script type="text/javascript" src="js/nav.js"></script>
 
     </body>
 </html>
