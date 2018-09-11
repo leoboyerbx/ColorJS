@@ -1,0 +1,18 @@
+
+.slidecontent {
+    position: absolute;
+    text-align: center;
+    left: 15%;
+    width: 70%;
+    top: 50%;
+    color: #fff;
+    transform: translateY(-50%);
+    -webkit-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+
+#home {
+    background: url(../img/colorjs.jpg) center center;
+    background-size: cover;
+}
