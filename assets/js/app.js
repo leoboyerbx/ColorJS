@@ -2,7 +2,8 @@ import qS from './modules/querySelector'
 import Nav from './modules/nav'
 import Generate from './modules/generate'
 import EventListeners from './modules/eventListeners'
-import Remote from './modules/remote'
+import CssRules from './modules/cssrules'
+CssRules.init()
 
 let slideShow = window.slideShow = {
     'slider': qS('#slider'),
