@@ -6,37 +6,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        
-        <!-- <link rel="stylesheet" href="assets/css/global.css">
-        <link rel="stylesheet" href="assets/css/slides.css"> -->
-        <!-- <link rel="stylesheet" href="assets/css/print.css" media="print"> -->
 
         <link rel="stylesheet" href="assets/css/user.css">
-        <link href="assets/fontawesome/css/fontawesome-all.css" rel="stylesheet">
         <link href="assets/fonts/nexa.css" rel="stylesheet">
 
 
         <title>ColorJS</title>
 </head>
     <body>
-    <div id="globalview">
-        <header>ColorJS Slideshow</header>
-    <div class="independent"></div>
-     <!-- Thumbnails -->
-     <div id="thumblist">
-         
-        <!--  Partie générée par generate.js -->
-        
-       </div> 
-    </div>    
       <!-- Slides -->
-       
        <div id="slider">
         <div id="home" class="slide otop">
             <div id="cslide0" class="slidecontent">
                 <h1 class="simple" animate=0>Color JS</h1>
-                   <p class="simple" style="transition-delay: 1s" animate=0>Une simple librairie pour créer des diaporamas en HTML/CSS, de manière simple<br> <br>
-                    <a href="javascript:void(0);" id="tb1">Visite guidée</a>
+                   <p class="simple" animate=0>Une simple librairie pour créer des diaporamas en HTML/CSS, de manière simple<br> <br>
+                    <a href="javascript:window.slideShow.next()" id="tb1">Visite guidée</a>
                 </p>
             </div>
         </div>
@@ -121,23 +105,6 @@
             </div>
         </div>
      </div>
-        
-        <div id="points">
-          <!--  points générés par generate.js-->
-        </div>
-        <div id="interface" class="material">
-            
-         <span class="fa fa-th" onclick="window.slideShow.globalView();"></span>
-         <span id="control">
-          <span class="fa fa-fast-backward" onclick="window.slideShow.goto(0);"></span>
-         <span class="fa fa-caret-left" onclick="window.slideShow.prev()"></span>
-         <span class="fa fa-caret-right" onclick="window.slideShow.next()"></span>
-         <span class="fa fa-fast-forward" onclick="window.slideShow.goto(window.slideShow.allSlides.length - 1)"></span>
-         <span class="fa fa-print" onclick="window.slideShow.print()"></span>
-         <span class="fa fa-wifi" id="remote" onclick="window.slideShow.remote.start();" style="display: none"></span>
-        </span>
-         
-        </div>
         <script src="dist/bundle.js"></script>
         
 

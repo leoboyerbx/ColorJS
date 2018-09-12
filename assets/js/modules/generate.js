@@ -1,3 +1,5 @@
+import { resolve } from "path";
+
 const generatePoints = function (slideShow) {
     let text = '<div onclick="window.slideShow.goto(0);" class="point select"></div>';
     for (let i = 1; i < slideShow.allSlides.length; i++) {

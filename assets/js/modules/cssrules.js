@@ -12,13 +12,13 @@ class CssRules {
     static init () {
         let existingStyleSheet = document.querySelector('link') || document.querySelector('style')
         if (existingStyleSheet) {
-            qS('head').insertBefore(importCss('assets/css/global.css'), existingStyleSheet)
-            qS('head').insertBefore(importCss('assets/css/slides.css'), existingStyleSheet)
+            qS('head').insertBefore(importCss('assets/css/colorjs.css'), existingStyleSheet)
+            qS('head').insertBefore(importCss('assets/fontawesome/css/fontawesome-all.css'), existingStyleSheet)
             qS('head').insertBefore(importCss('assets/css/print.css', 'print'), existingStyleSheet)
 
         } else {
-            qS('head').appendChild(importCss('assets/css/global.css'))
-            qS('head').appendChild(importCss('assets/css/slides.css'))
+            qS('head').appendChild(importCss('assets/css/colorjs.css'))
+            qS('head').appendChild(importCss('assets/fontawesome/css/fontawesome-all.css'))
             qS('head').appendChild(importCss('assets/css/print.css', 'print'))
         }
     }
