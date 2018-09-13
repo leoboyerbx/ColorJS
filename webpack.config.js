@@ -6,7 +6,7 @@ module.exports = {
     entry: "./assets/js/app.js",
     output: {
         path: path.resolve('./dist/'),
-        filename: 'bundle.js'
+        filename: 'colorjs-min.js'
     },
     mode: dmode
 }
