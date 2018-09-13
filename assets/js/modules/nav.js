@@ -23,6 +23,10 @@ class Nav {
                         this.currentSlide++;
                         this.setPoint(this.currentSlide)
                     }
+                    if (e.tagName == "VIDEO" && e.getAttribute('cjs-autoplay') == "true") {
+                        e.play()
+                        
+                    }
                 }
                 this.currentAnimate++;
             }
