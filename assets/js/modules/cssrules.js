@@ -10,9 +10,9 @@ let importCss = function(target, media) {
 }
 class CssRules {
     static init () {
-        let faCSS = 'https://cdn.rawgit.com/leoboyerbx/ColorJS/cdn/assets/fontawesome/css/fontawesome-all.css'
-        let globalCSS = "https://cdn.rawgit.com/leoboyerbx/ColorJS/cdn/assets/css/colorjs.css"
-        let printCSS = "https://cdn.rawgit.com/leoboyerbx/ColorJS/cdn/assets/css/print.css"
+        let faCSS = 'https://cdn.colorjs.cf/v0.8/assets/fontawesome/css/fontawesome-all.css'
+        let globalCSS = "https://cdn.colorjs.cf/v0.8/assets/css/colorjs.css"
+        let printCSS = "https://cdn.colorjs.cf/v0.8/assets/css/print.css"
         let existingStyleSheet = document.querySelector('link') || document.querySelector('style')
         if (existingStyleSheet) {
             qS('head').insertBefore(importCss(globalCSS), existingStyleSheet)
