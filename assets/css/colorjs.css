@@ -1,0 +1,462 @@
+html body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    background-color: #efefef;
+}
+a {
+    text-decoration: none;
+    -webkit-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    color: #a6d1f0;
+}
+a:hover {
+    color: #ce2b2b;
+}
+
+.nocursor {
+    cursor: none;
+}
+/*------global view---*/
+#globalview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    font-family: "Nexa", sans-serif;
+}
+header.cjs-header {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 2%;
+    font-size: 300%;
+    background-color: #e8e8e8;
+}
+
+#cjs-thumbnails-list {
+    margin: 2%;
+    text-align: center;
+}
+.cjs-thumbnail {
+    display: inline-block;
+    margin: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    width: 260px;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.cjs-thumbnail:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.cjs-thumbnail .cjs-thumbnail-picture {
+    width: 192px;
+    height: 108px;
+    background-color: #b2b2b2;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+.cjs-thumbnail-image {
+    width: 100%;
+    max-height: 100%;
+}
+.cjs-thumbnail .cjs-legend {
+    width: 100%;
+    font-size: 90%;
+}
+
+
+
+/* Slider */
+
+#cjs-slider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+#cjs-slider.globalview {
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+.cjs-slide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    font-size: 180%;
+    overflow: hidden;
+    font-family: "Nexa", sans-serif;
+    -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+#cjs-points {
+    position: fixed;
+    top: 50%;
+    left: 2%;
+    padding: 10px;
+    width: 30px;
+    max-height: 90%;
+    text-align: center;
+    line-height: 3;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;  
+}
+#cjs-points.hidden {
+    -webkit-transform: translate(-100px, -50%);
+    -ms-transform: translate(-100px, -50%);
+    -o-transform: translate(-100px, -50%);
+    transform: translate(-100px, -50%);
+}
+#cjs-points.globalview {
+    -webkit-transform: translateX(-100px);
+    -ms-transform: translateX(-100px);
+    -o-transform: translateX(-100px);
+    transform: translateX(-100px); 
+}
+
+.cjs-point {
+    width: 15px;
+    height: 15px;
+    border-radius: 20px;
+    display: inline-block;
+    border: solid #f0f0f0 3px;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.cjs-point.select {
+    border: solid #f0f0f0 10px;
+    width: 0;
+    height: 0;
+}
+
+#cjs-interface {
+    position: fixed;
+    bottom: 2%;
+    left: 2%;
+    padding: 10px;
+    text-align: center;
+    color: #f0f0f0;
+    font-size: 180%;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;  
+}
+#cjs-interface.material {
+    padding-left: 30px;
+    padding-right: 0;
+    padding-top: 15px;
+    color: rgb(15, 15, 15);
+    background-color: #fff;
+    border-radius: 100px;
+}
+
+
+#cjs-interface span {
+    cursor: pointer;
+    margin-right: 20px;
+    transition: all 0.2s ease;
+}
+
+#cjs-interface.globalview {
+    color: #333333;
+}
+#cjs-interface.hidden {
+    -webkit-transform: translateY(100px);
+    -ms-transform: translateY(100px);
+    -o-transform: translateY(100px);
+    transform: translateY(100px);
+}
+#cjs-control {
+    -webkit-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease; 
+}
+#cjs-control.globalview {
+    font-size: 0;
+    opacity: 0;
+}
+#cjs-interface.globalview span {
+    margin-right: 10px;
+}
+#cjs-control.globalview span {
+    width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.notransition {
+    transition: none;
+}
+
+
+
+
+/* ======================== Slide Properties =============== */
+
+/* #cjs-slider {
+    perspective: 1000px;
+} */
+
+
+/*=============== Classic ===============*/
+/*=============== ↑ Bottom to top ↑ ===============*/
+
+.cjs-slide.ibottom {
+    top: 0;
+    left: 0;
+    -webkit-transform: translate(0,100%);
+    -ms-transform: translate(0,100%);
+    -o-transform: translate(0,100%);
+    transform: translate(0,100%);
+}
+
+.cjs-slide.otop.prev {    
+    -webkit-transform: translate(0, -20%);
+    -ms-transform: translate(0, -20%);
+    -o-transform: translate(0, -20%);
+    transform: translate(0, -20%);
+}
+
+/*=============== ← Right to Left ← ==============*/
+
+.cjs-slide.iright {
+    top: 0;
+    left: 0;
+    -webkit-transform: translate(100%, 0);
+    -ms-transform: translate(100%, 0);
+    -o-transform: translate(100%, 0);
+    transform: translate(100%, 0);
+}
+
+.cjs-slide.oleft.prev {
+    -webkit-transform: translate(-20%, 0);
+    -ms-transform: translate(-20%, 0);
+    -o-transform: translate(-20%, 0);
+    transform: translate(-20%, 0);
+}
+
+/*=============== ↓ Top to bottom ↓ ==============*/
+
+.cjs-slide.itop {
+    top: 0;
+    left: 0;
+    -webkit-transform: translate(0, -100%);
+    -ms-transform: translate(0, -100%);
+    -o-transform: translate(0, -100%);
+    transform: translate(0, -100%);
+}
+
+.cjs-slide.obottom.prev {
+    -webkit-transform: translate(0, 20%);
+    -ms-transform: translate(0, 20%);
+    -o-transform: translate(0, 20%);
+    transform: translate(0, 20%);
+}
+
+/*=============== → Left To Right → ==============*/
+
+.cjs-slide.ileft {
+    top: 0;
+    left: 0;
+    -webkit-transform: translate(-100%,0);
+    -ms-transform: translate(-100%,0);
+    -o-transform: translate(-100%,0);
+    transform: translate(-100%,0);
+}
+
+.cjs-slide.oright.prev {
+    -webkit-transform: translate(20%, 0);
+    -ms-transform: translate(20%, 0);
+    -o-transform: translate(20%, 0);
+    transform: translate(20%, 0);
+}
+
+
+/*=============== Push===============*/
+/*=============== ↑ Bottom to top ↑ ===============*/
+
+.cjs-slide.opushtop.prev {    
+    -webkit-transform: translate(0, -100%);
+    -ms-transform: translate(0, -100%);
+    -o-transform: translate(0, -100%);
+    transform: translate(0, -100%);
+}
+
+/*=============== ← Right to Left ← ==============*/
+
+.cjs-slide.opushleft.prev {
+    -webkit-transform: translate(-100%, 0);
+    -ms-transform: translate(-100%, 0);
+    -o-transform: translate(-100%, 0);
+    transform: translate(-100%, 0);
+}
+
+/*=============== ↓ Top to bottom ↓ ==============*/
+.cjs-slide.opushbottom.prev {
+    -webkit-transform: translate(0, 100%);
+    -ms-transform: translate(0, 100%);
+    -o-transform: translate(0, 100%);
+    transform: translate(0, 100%);
+}
+
+/*=============== → Left To Right → ==============*/
+.cjs-slide.opushright.prev {
+    -webkit-transform: translate(100%, 0);
+    -ms-transform: translate(100%, 0);
+    -o-transform: translate(100%, 0);
+    transform: translate(100%, 0);
+}
+
+
+
+/*=============== Fade ==============*/
+.cjs-slide.ifade, .cjs-slide.ofade.prev {
+    opacity: 0;
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    transform: translate(0,0);
+}
+.cjs-slide.ofade.prev {
+    -webkit-transition-delay: .3s;
+    -o-transition-delay: .3s;
+    transition-delay: .3s;
+}
+/*=============== Stay ==============*/
+.cjs-slide.ostay.prev {
+    opacity: 1;
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    transform: translate(0,0);
+}
+
+
+
+/*=============== All ==============*/
+
+.cjs-slide.cjs-slide.current {
+    opacity: 1;
+    -webkit-transform: translate(0,0) rotateY(0);
+    -ms-transform: translate(0,0) rotateY(0);
+    -o-transform: translate(0,0) rotateY(0);
+    transform: translate(0,0) rotateY(0);
+}
+
+
+/* ====== Fonction de masquage =======*/
+
+.cjs-slide.cjs-slide.hidden {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+}
+
+
+/* ====== Personnalized animations =======*/
+
+[cjs-animate].simple {
+    /* display: inline-block;*/
+     -webkit-transform: translateX(80px);
+     -ms-transform: translateX(80px);
+     -o-transform: translateX(80px);
+     transform: translateX(80px);
+     opacity: 0;
+     -webkit-transition: all 0.3s ease-out;
+     -o-transition: all 0.3s ease-out;
+     transition: all 0.3s ease-out;
+ }
+ 
+ [cjs-animate].simple.current {
+     -webkit-transform: translateX(0);
+     -ms-transform: translateX(0);
+     -o-transform: translateX(0);
+     transform: translateX(0);
+     opacity: 1;
+ }
+ [cjs-animate].simple {
+   /* display: inline-block;*/
+    -webkit-transform: translateX(80px);
+    -ms-transform: translateX(80px);
+    -o-transform: translateX(80px);
+    transform: translateX(80px);
+    opacity: 0;
+    -webkit-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+[cjs-animate].simpleleft {
+    /* display: inline-block;*/
+     -webkit-transform: translateX(-80px);
+     -ms-transform: translateX(-80px);
+     -o-transform: translateX(-80px);
+     transform: translateX(-80px);
+     opacity: 0;
+     transition: all 0.4s cubic-bezier(.42, 0, .11, .98);
+ }
+
+[cjs-animate].simple.current, [cjs-animate].simpleleft.current {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+}
+
+[cjs-animate].appear {
+    visibility: hidden;
+}
+[cjs-animate].appear.current {
+    visibility: visible;
+}
+
+[cjs-animate].fade {
+    opacity: 0;
+    transition: all 0.3s ease-out;
+}
+[cjs-animate].fade.current {
+    opacity: 1;
+}
+[cjs-animate].zoom {
+    transform: scale(0);
+    transition: all 0.3s ease-out;
+}
+[cjs-animate].zoom.current {
+    transform: scale(1);
+}

@@ -17,11 +17,15 @@ class Nav {
                 for(let i = 0; i < animElements.length; i++) {
                     let e = animElements[i]
                     e.classList.add('current')
-                    if (e.classList.contains('slide')) {
+                    if (e.classList.contains('cjs-slide')) {
                         this.allSlides[this.currentSlide].classList.add('prev')
                         this.allSlides[this.currentSlide].classList.remove('current')
                         this.currentSlide++;
                         this.setPoint(this.currentSlide)
+                    }
+                    if (e.tagName == "VIDEO" && e.getAttribute('cjs-autoplay') == "true") {
+                        e.play()
+                        
                     }
                 }
                 this.currentAnimate++;
@@ -45,7 +49,7 @@ class Nav {
                         let e = animElements[i]
                         e.classList.remove('current')
         
-                        if (e.classList.contains('slide')) {
+                        if (e.classList.contains('cjs-slide')) {
                             this.allSlides[this.currentSlide - 1].classList.add('current')
                             this.allSlides[this.currentSlide - 1].classList.remove('prev')
                             this.currentSlide--;
@@ -99,13 +103,13 @@ class Nav {
         }
 
         slideShow.hideInterface = function() {
-            qS('#points').classList.add('hidden');
-            qS('#interface').classList.add('hidden');
+            qS('#cjs-points').classList.add('hidden');
+            qS('#cjs-interface').classList.add('hidden');
             document.body.classList.add('nocursor');
         }
         slideShow.showInterface = function () {
-            qS('#points').classList.remove('hidden');
-            qS('#interface').classList.remove('hidden');
+            qS('#cjs-points').classList.remove('hidden');
+            qS('#cjs-interface').classList.remove('hidden');
             document.body.classList.remove('nocursor');
         }
 
@@ -114,10 +118,10 @@ class Nav {
             for (let i = 0; i < this.allSlides.length; i++) {
                 this.allSlides[i].classList.toggle('hidden')
             }
-            qS('#points').classList.toggle('globalview')
-            qS('#interface').classList.toggle('globalview')
-            qS('#control').classList.toggle('globalview')
-            document.querySelector('#interface span').classList.toggle('fa-play-circle-o')
+            qS('#cjs-points').classList.toggle('globalview')
+            qS('#cjs-interface').classList.toggle('globalview')
+            qS('#cjs-control').classList.toggle('globalview')
+            document.querySelector('#cjs-interface span').classList.toggle('fa-play-circle-o')
             window.clearTimeout(this.timeOut1);
         }
     }

@@ -16,3 +16,11 @@
     background: url(../images/colorjs.jpg) center center;
     background-size: cover;
 }
+code {
+    color: #1c1c1c;
+    background-color: #e6e6e6;
+    font-family: monospace sans-serif;
+    padding: 4px;
+    border-radius: 3px;
+    margin: 2px;
+}

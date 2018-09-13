@@ -1,10 +1,12 @@
+import { resolve } from "path";
+
 const generatePoints = function (slideShow) {
-    let text = '<div onclick="window.slideShow.goto(0);" class="point select"></div>';
+    let text = '<div onclick="window.slideShow.goto(0);" class="cjs-point select"></div>';
     for (let i = 1; i < slideShow.allSlides.length; i++) {
-        text += '<div onclick="window.slideShow.goto(' + i + ');" class="point"></div>';
+        text += '<div onclick="window.slideShow.goto(' + i + ');" class="cjs-point"></div>';
     }
-    document.querySelector('#points').innerHTML = text;
-    slideShow.allPoints = document.querySelectorAll('.point');
+    document.querySelector('#cjs-points').innerHTML = text;
+    slideShow.allPoints = document.querySelectorAll('.cjs-point');
     slideShow.timeOut1 = window.setTimeout(slideShow.hideInterface, 2000);
 }
 const generateThumbnails = function(slideShow) {
@@ -23,27 +25,27 @@ const generateThumbnails = function(slideShow) {
         
         if (getImage) {
             image = getImage.src;
-            image = '<img src="' + image + '" class="thumbnailimage">'
+            image = '<img src="' + image + '" class="cjs-thumbnail-image">'
         }
         else {
             image = "";
         }
         
         
-        thumbnails += '<div class="thumbnail" onclick="window.slideShow.globalView(); window.slideShow.goto(' + i + ');"><div class="picture" style="background-color: ' + color + ';">' + image + ' </div><div class="legende">'+ legend + '</div></div>';
+        thumbnails += '<div class="cjs-thumbnail" onclick="window.slideShow.globalView(); window.slideShow.goto(' + i + ');"><div class="cjs-thumbnail-picture" style="background-color: ' + color + ';">' + image + ' </div><div class="cjs-legend">'+ legend + '</div></div>';
     }
-    document.querySelector('#thumblist').innerHTML = thumbnails;
+    document.querySelector('#cjs-thumbnails-list').innerHTML = thumbnails;
 };
 
 const generateAnimData = function (slideShow) {
     let increment = 0;
     for (let i = 0; i < slideShow.allSlides.length; i++) {
         slideShow.allSlides[i].setAttribute('anim-data', increment);
-        let animeElementsInSlide = slideShow.allSlides[i].querySelectorAll('[animate]');
+        let animeElementsInSlide = slideShow.allSlides[i].querySelectorAll('[cjs-animate]');
         let lastestAnimation = 0;
         for (let j = 0; j < animeElementsInSlide.length; j++) {
             let element = animeElementsInSlide[j];
-            let elementAnim = Number(element.getAttribute('animate'));
+            let elementAnim = Number(element.getAttribute('cjs-animate'));
             element.setAttribute('anim-data', increment + elementAnim);
             if (elementAnim > lastestAnimation) {
                 lastestAnimation = elementAnim
