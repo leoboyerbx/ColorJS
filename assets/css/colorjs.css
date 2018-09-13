@@ -16,15 +16,6 @@ a:hover {
     color: #ce2b2b;
 }
 
-code {
-    color: #1c1c1c;
-    background-color: #e6e6e6;
-    font-family: monospace sans-serif;
-    padding: 4px;
-    border-radius: 3px;
-    margin: 2px;
-}
-
 .nocursor {
     cursor: none;
 }
@@ -38,7 +29,7 @@ code {
     overflow-y: scroll;
     font-family: "Nexa", sans-serif;
 }
-header {
+header.cjs-header {
     width: 100%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -48,11 +39,11 @@ header {
     background-color: #e8e8e8;
 }
 
-#thumblist {
+#cjs-thumbnails-list {
     margin: 2%;
     text-align: center;
 }
-.thumbnail {
+.cjs-thumbnail {
     display: inline-block;
     margin: 20px;
     -webkit-box-sizing: border-box;
@@ -67,25 +58,25 @@ header {
     transition: all 0.2s ease;
 }
 
-.thumbnail:hover {
+.cjs-thumbnail:hover {
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     -o-transform: scale(1.1);
     transform: scale(1.1);
 }
 
-.thumbnail .picture {
+.cjs-thumbnail .cjs-thumbnail-picture {
     width: 192px;
     height: 108px;
     background-color: #b2b2b2;
     margin-bottom: 5px;
     display: inline-block;
 }
-.thumbnailimage {
+.cjs-thumbnail-image {
     width: 100%;
     max-height: 100%;
 }
-.thumbnail .legende {
+.cjs-thumbnail .cjs-legend {
     width: 100%;
     font-size: 90%;
 }
@@ -94,7 +85,7 @@ header {
 
 /* Slider */
 
-#slider {
+#cjs-slider {
     position: fixed;
     top: 0;
     left: 0;
@@ -104,14 +95,14 @@ header {
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
 }
-#slider.globalview {
+#cjs-slider.globalview {
     -webkit-transform: translateX(-100%);
     -ms-transform: translateX(-100%);
     -o-transform: translateX(-100%);
     transform: translateX(-100%);
 }
 
-.slide {
+.cjs-slide {
     position: fixed;
     top: 0;
     left: 0;
@@ -124,16 +115,8 @@ header {
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
 }
-.animate {
-    -webkit-transition: all 0.8s ease-in-out;
-    -o-transition: all 0.8s ease-in-out;
-    transition: all 0.8s ease-in-out;    
-}
 
-
-
-
-#points {
+#cjs-points {
     position: fixed;
     top: 50%;
     left: 2%;
@@ -150,20 +133,20 @@ header {
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease;  
 }
-#points.hidden {
+#cjs-points.hidden {
     -webkit-transform: translate(-100px, -50%);
     -ms-transform: translate(-100px, -50%);
     -o-transform: translate(-100px, -50%);
     transform: translate(-100px, -50%);
 }
-#points.globalview {
+#cjs-points.globalview {
     -webkit-transform: translateX(-100px);
     -ms-transform: translateX(-100px);
     -o-transform: translateX(-100px);
     transform: translateX(-100px); 
 }
 
-.point {
+.cjs-point {
     width: 15px;
     height: 15px;
     border-radius: 20px;
@@ -175,13 +158,13 @@ header {
     cursor: pointer;
 }
 
-.select {
+.cjs-point.select {
     border: solid #f0f0f0 10px;
     width: 0;
     height: 0;
 }
 
-#interface {
+#cjs-interface {
     position: fixed;
     bottom: 2%;
     left: 2%;
@@ -193,7 +176,7 @@ header {
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease;  
 }
-#interface.material {
+#cjs-interface.material {
     padding-left: 30px;
     padding-right: 0;
     padding-top: 15px;
@@ -203,26 +186,37 @@ header {
 }
 
 
-#interface span {
+#cjs-interface span {
     cursor: pointer;
     margin-right: 20px;
+    transition: all 0.2s ease;
 }
-#interface.globalview {
+
+#cjs-interface.globalview {
     color: #333333;
 }
-#interface.hidden {
+#cjs-interface.hidden {
     -webkit-transform: translateY(100px);
     -ms-transform: translateY(100px);
     -o-transform: translateY(100px);
     transform: translateY(100px);
 }
-#control {
+#cjs-control {
     -webkit-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
     transition: all 0.2s ease; 
 }
-#control.globalview {
+#cjs-control.globalview {
     font-size: 0;
+    opacity: 0;
+}
+#cjs-interface.globalview span {
+    margin-right: 10px;
+}
+#cjs-control.globalview span {
+    width: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .notransition {
@@ -234,15 +228,15 @@ header {
 
 /* ======================== Slide Properties =============== */
 
-#slider {
+/* #cjs-slider {
     perspective: 1000px;
-}
+} */
 
 
 /*=============== Classic ===============*/
 /*=============== ↑ Bottom to top ↑ ===============*/
 
-.ibottom {
+.cjs-slide.ibottom {
     top: 0;
     left: 0;
     -webkit-transform: translate(0,100%);
@@ -251,7 +245,7 @@ header {
     transform: translate(0,100%);
 }
 
-.otop.prev {    
+.cjs-slide.otop.prev {    
     -webkit-transform: translate(0, -20%);
     -ms-transform: translate(0, -20%);
     -o-transform: translate(0, -20%);
@@ -260,7 +254,7 @@ header {
 
 /*=============== ← Right to Left ← ==============*/
 
-.iright {
+.cjs-slide.iright {
     top: 0;
     left: 0;
     -webkit-transform: translate(100%, 0);
@@ -269,7 +263,7 @@ header {
     transform: translate(100%, 0);
 }
 
-.oleft.prev {
+.cjs-slide.oleft.prev {
     -webkit-transform: translate(-20%, 0);
     -ms-transform: translate(-20%, 0);
     -o-transform: translate(-20%, 0);
@@ -278,7 +272,7 @@ header {
 
 /*=============== ↓ Top to bottom ↓ ==============*/
 
-.itop {
+.cjs-slide.itop {
     top: 0;
     left: 0;
     -webkit-transform: translate(0, -100%);
@@ -287,7 +281,7 @@ header {
     transform: translate(0, -100%);
 }
 
-.obottom.prev {
+.cjs-slide.obottom.prev {
     -webkit-transform: translate(0, 20%);
     -ms-transform: translate(0, 20%);
     -o-transform: translate(0, 20%);
@@ -296,7 +290,7 @@ header {
 
 /*=============== → Left To Right → ==============*/
 
-.ileft {
+.cjs-slide.ileft {
     top: 0;
     left: 0;
     -webkit-transform: translate(-100%,0);
@@ -305,7 +299,7 @@ header {
     transform: translate(-100%,0);
 }
 
-.oright.prev {
+.cjs-slide.oright.prev {
     -webkit-transform: translate(20%, 0);
     -ms-transform: translate(20%, 0);
     -o-transform: translate(20%, 0);
@@ -316,7 +310,7 @@ header {
 /*=============== Push===============*/
 /*=============== ↑ Bottom to top ↑ ===============*/
 
-.opushtop.prev {    
+.cjs-slide.opushtop.prev {    
     -webkit-transform: translate(0, -100%);
     -ms-transform: translate(0, -100%);
     -o-transform: translate(0, -100%);
@@ -325,7 +319,7 @@ header {
 
 /*=============== ← Right to Left ← ==============*/
 
-.opushleft.prev {
+.cjs-slide.opushleft.prev {
     -webkit-transform: translate(-100%, 0);
     -ms-transform: translate(-100%, 0);
     -o-transform: translate(-100%, 0);
@@ -333,7 +327,7 @@ header {
 }
 
 /*=============== ↓ Top to bottom ↓ ==============*/
-.opushbottom.prev {
+.cjs-slide.opushbottom.prev {
     -webkit-transform: translate(0, 100%);
     -ms-transform: translate(0, 100%);
     -o-transform: translate(0, 100%);
@@ -341,7 +335,7 @@ header {
 }
 
 /*=============== → Left To Right → ==============*/
-.opushright.prev {
+.cjs-slide.opushright.prev {
     -webkit-transform: translate(100%, 0);
     -ms-transform: translate(100%, 0);
     -o-transform: translate(100%, 0);
@@ -351,20 +345,20 @@ header {
 
 
 /*=============== Fade ==============*/
-.ifade, .ofade.prev {
+.cjs-slide.ifade, .cjs-slide.ofade.prev {
     opacity: 0;
     -webkit-transform: translate(0,0);
     -ms-transform: translate(0,0);
     -o-transform: translate(0,0);
     transform: translate(0,0);
 }
-.ofade.prev {
+.cjs-slide.ofade.prev {
     -webkit-transition-delay: .3s;
     -o-transition-delay: .3s;
     transition-delay: .3s;
 }
 /*=============== Stay ==============*/
-.ostay.prev {
+.cjs-slide.ostay.prev {
     opacity: 1;
     -webkit-transform: translate(0,0);
     -ms-transform: translate(0,0);
@@ -376,7 +370,7 @@ header {
 
 /*=============== All ==============*/
 
-.slide.current {
+.cjs-slide.cjs-slide.current {
     opacity: 1;
     -webkit-transform: translate(0,0) rotateY(0);
     -ms-transform: translate(0,0) rotateY(0);
@@ -387,7 +381,7 @@ header {
 
 /* ====== Fonction de masquage =======*/
 
-.slide.hidden {
+.cjs-slide.cjs-slide.hidden {
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
     -o-transform: translateX(0);
@@ -397,7 +391,7 @@ header {
 
 /* ====== Personnalized animations =======*/
 
-.simple {
+[cjs-animate].simple {
     /* display: inline-block;*/
      -webkit-transform: translateX(80px);
      -ms-transform: translateX(80px);
@@ -409,14 +403,14 @@ header {
      transition: all 0.3s ease-out;
  }
  
- .simple.current {
+ [cjs-animate].simple.current {
      -webkit-transform: translateX(0);
      -ms-transform: translateX(0);
      -o-transform: translateX(0);
      transform: translateX(0);
      opacity: 1;
  }
-.simple {
+ [cjs-animate].simple {
    /* display: inline-block;*/
     -webkit-transform: translateX(80px);
     -ms-transform: translateX(80px);
@@ -427,8 +421,17 @@ header {
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
 }
+[cjs-animate].simpleleft {
+    /* display: inline-block;*/
+     -webkit-transform: translateX(-80px);
+     -ms-transform: translateX(-80px);
+     -o-transform: translateX(-80px);
+     transform: translateX(-80px);
+     opacity: 0;
+     transition: all 0.4s cubic-bezier(.42, 0, .11, .98);
+ }
 
-.simple.current {
+[cjs-animate].simple.current, [cjs-animate].simpleleft.current {
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
     -o-transform: translateX(0);
@@ -436,24 +439,24 @@ header {
     opacity: 1;
 }
 
-.appear {
+[cjs-animate].appear {
     visibility: hidden;
 }
-.appear.current {
+[cjs-animate].appear.current {
     visibility: visible;
 }
 
-.fade {
+[cjs-animate].fade {
     opacity: 0;
     transition: all 0.3s ease-out;
 }
-.fade.current {
+[cjs-animate].fade.current {
     opacity: 1;
 }
-.zoom {
+[cjs-animate].zoom {
     transform: scale(0);
     transition: all 0.3s ease-out;
 }
-.zoom.current {
+[cjs-animate].zoom.current {
     transform: scale(1);
 }

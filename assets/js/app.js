@@ -9,11 +9,11 @@ createElements().then(() => {
     CssRules.init()
 
     let slideShow = window.slideShow = {
-        'slider': qS('#slider'),
+        'slider': qS('#cjs-slider'),
         'scrolling': 0,
         'currentSlide': 0,
         'currentAnimate': 0,
-        'allSlides': qS('.slide'),
+        'allSlides': qS('.cjs-slide'),
         'allAnimate': document.querySelectorAll('[anim-data]'),
         'remoteState': 0,
     }
