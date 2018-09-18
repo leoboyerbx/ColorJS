@@ -357,6 +357,10 @@ header.cjs-header {
     -o-transition-delay: .3s;
     transition-delay: .3s;
 }
+/*=============== Pop ==============*/
+.cjs-slide.ipop, .cjs-slide.opop.prev {
+    visibility: hidden;
+}
 /*=============== Stay ==============*/
 .cjs-slide.ostay.prev {
     opacity: 1;
@@ -370,8 +374,9 @@ header.cjs-header {
 
 /*=============== All ==============*/
 
-.cjs-slide.cjs-slide.current {
+.cjs-slide.current {
     opacity: 1;
+    visibility: visible;
     -webkit-transform: translate(0,0) rotateY(0);
     -ms-transform: translate(0,0) rotateY(0);
     -o-transform: translate(0,0) rotateY(0);
@@ -381,7 +386,7 @@ header.cjs-header {
 
 /* ====== Fonction de masquage =======*/
 
-.cjs-slide.cjs-slide.hidden {
+.cjs-slide.hidden {
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
     -o-transform: translateX(0);

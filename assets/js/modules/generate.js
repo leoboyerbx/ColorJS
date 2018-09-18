@@ -1,4 +1,12 @@
-import { resolve } from "path";
+const checkClasses = function (element, classes) {
+    let final = false
+    classes.forEach(e => {
+        if (element.classList.contains(e)) {
+            final = true
+        }
+    })
+    return final
+}
 
 const generatePoints = function (slideShow) {
     let text = '<div onclick="window.slideShow.goto(0);" class="cjs-point select"></div>';
@@ -33,6 +41,12 @@ const generateThumbnails = function(slideShow) {
         
         
         thumbnails += '<div class="cjs-thumbnail" onclick="window.slideShow.globalView(); window.slideShow.goto(' + i + ');"><div class="cjs-thumbnail-picture" style="background-color: ' + color + ';">' + image + ' </div><div class="cjs-legend">'+ legend + '</div></div>';
+        
+        // Ajout de transition si pas
+        if(!checkClasses(slideShow.allSlides[i], ['ipop', 'ibottom', 'iright','ileft', 'itop'])) {
+            slideShow.allSlides[i].classList.add('ipop')
+        }
+        
     }
     document.querySelector('#cjs-thumbnails-list').innerHTML = thumbnails;
 };
