@@ -352,6 +352,9 @@ header.cjs-header {
     -o-transform: translate(0,0);
     transform: translate(0,0);
 }
+.cjs-slide.ifade.prev {
+    opacity: 1;
+}
 /*=============== Stay ==============*/
 .cjs-slide.ostay.prev {
     opacity: 1;
@@ -365,7 +368,7 @@ header.cjs-header {
 
 /*=============== All ==============*/
 
-.cjs-slide.cjs-slide.current {
+.cjs-slide.current {
     opacity: 1;
     -webkit-transform: translate(0,0) rotateY(0);
     -ms-transform: translate(0,0) rotateY(0);
