@@ -3,7 +3,7 @@ import createElements from './modules/createElements'
 import Nav from './modules/nav'
 import Generate from './modules/generate'
 import EventListeners from './modules/eventListeners'
-import CssRules from './modules/cssRules'
+import CssRules from './modules/cssrules'
 
 createElements().then(() => {
     CssRules.init()
