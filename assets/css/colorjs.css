@@ -345,17 +345,12 @@ header.cjs-header {
 
 
 /*=============== Fade ==============*/
-.cjs-slide.ifade, .cjs-slide.ofade.prev {
+.cjs-slide.ifade {
     opacity: 0;
     -webkit-transform: translate(0,0);
     -ms-transform: translate(0,0);
     -o-transform: translate(0,0);
     transform: translate(0,0);
-}
-.cjs-slide.ofade.prev {
-    -webkit-transition-delay: .3s;
-    -o-transition-delay: .3s;
-    transition-delay: .3s;
 }
 /*=============== Stay ==============*/
 .cjs-slide.ostay.prev {
