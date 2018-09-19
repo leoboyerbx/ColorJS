@@ -116,6 +116,9 @@ const generateTranstions = function (slideShow) {
             addToPrevSlide(slideShow, i, 'ostay')
             
             slide.classList.remove('fade')
+        } else { // Default transition: pop
+            slide.classList.add('idefault')
+            addToPrevSlide(slideShow, i, 'ostay')
         }
     }
 }

@@ -355,9 +355,19 @@ header.cjs-header {
 .cjs-slide.ifade.prev {
     opacity: 1;
 }
+
+/*=============== Default ==============*/
+.cjs-slide.idefault {
+    display: none;
+}
+.cjs-slide.idefault.current, .cjs-slide.idefault.prev {
+    display: block;
+}
+
 /*=============== Stay ==============*/
 .cjs-slide.ostay.prev {
     opacity: 1;
+    display: block;
     -webkit-transform: translate(0,0);
     -ms-transform: translate(0,0);
     -o-transform: translate(0,0);
@@ -370,6 +380,7 @@ header.cjs-header {
 
 .cjs-slide.current {
     opacity: 1;
+    display: block;
     -webkit-transform: translate(0,0) rotateY(0);
     -ms-transform: translate(0,0) rotateY(0);
     -o-transform: translate(0,0) rotateY(0);
