@@ -1,5 +1,3 @@
-import { resolve } from "path";
-
 const generatePoints = function (slideShow) {
     let text = '<div onclick="window.slideShow.goto(0);" class="cjs-point select"></div>';
     for (let i = 1; i < slideShow.allSlides.length; i++) {
@@ -59,6 +57,72 @@ const generateAnimData = function (slideShow) {
     slideShow.allAnimate = document.querySelectorAll('[anim-data]')
 }
 
+
+const addToPrevSlide = function (slideShow, i, transition) {
+    if (i > 0) {
+        slideShow.allSlides[i-1].classList.add(transition)
+    }
+}
+const generateTranstions = function (slideShow) {
+    for (let i = 0; i < slideShow.allSlides.length; i++) {
+        let slide = slideShow.allSlides[i]
+        let cL = Array.from(slide.classList)
+        if (cL.includes('bottom')) {
+            slide.classList.add('ibottom')
+            if (cL.includes('cover')) {
+                addToPrevSlide(slideShow, i, 'ostay')
+            } else if (cL.includes('push')) {
+                addToPrevSlide(slideShow, i, 'opushtop')
+            } else {
+                addToPrevSlide(slideShow, i, 'otop')
+            }
+            
+            slide.classList.remove('bottom')
+        } else if (cL.includes('right')) {
+            slide.classList.add('iright')
+            if (cL.includes('cover')) {
+                addToPrevSlide(slideShow, i, 'ostay')
+            } else if (cL.includes('push')) {
+                addToPrevSlide(slideShow, i, 'opushleft')
+            } else {
+                addToPrevSlide(slideShow, i, 'oleft')
+            }
+            
+            slide.classList.remove('right')
+        } else if (cL.includes('top')) {
+            slide.classList.add('itop')
+            if (cL.includes('cover')) {
+                addToPrevSlide(slideShow, i, 'ostay')
+            } else if (cL.includes('push')) {
+                addToPrevSlide(slideShow, i, 'opushbottom')
+            } else {
+                addToPrevSlide(slideShow, i, 'obottom')
+            }
+            
+            slide.classList.remove('top')
+        } else if (cL.includes('left')) {
+            slide.classList.add('ileft')
+            if (cL.includes('cover')) {
+                addToPrevSlide(slideShow, i, 'ostay')
+            } else if (cL.includes('push')) {
+                addToPrevSlide(slideShow, i, 'opushright')
+            } else {
+                addToPrevSlide(slideShow, i, 'oright')
+            }
+            
+            slide.classList.remove('left')
+        } else if (cL.includes('fade')) {
+            slide.classList.add('ifade')
+            addToPrevSlide(slideShow, i, 'ostay')
+            
+            slide.classList.remove('fade')
+        } else { // Default transition: pop
+            slide.classList.add('idefault')
+            addToPrevSlide(slideShow, i, 'ostay')
+        }
+    }
+}
+
 class Generate {
     /**
      * Fonction qui g&nère les points, les thumbnails et les AnimData
@@ -67,6 +131,7 @@ class Generate {
     static generate(slideShow) {
         generatePoints(slideShow)
         generateThumbnails(slideShow)
+        generateTranstions(slideShow)
         generateAnimData(slideShow)
     }
 
