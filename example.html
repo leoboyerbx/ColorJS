@@ -16,87 +16,60 @@
         <div id="home" style="background-color: rgb(172, 59, 59);" class="cjs-slide">
             <div id="cslide0" class="slidecontent">
                 <h1 class="simple" cjs-animate=0>Color JS</h1>
-                   <p class="simple" cjs-animate=0>Une simple librairie pour créer des diaporamas en HTML/CSS, de manière simple<br> <br>
-                    <a href="javascript:window.slideShow.next()" id="tb1">Visite guidée</a>
+                   <p class="simple" cjs-animate=0>
+                       Une simple librairie pour créer des diaporamas en HTML/CSS, de manière simple<br> <br>
+                    <a href="javascript:window.slideShow.next()" id="tb1"><i class="fa fa-eye"></i> Visite guidée</a> <br>
+                    <a href="https://github.com/leoboyerbx/ColorJS"><i class="fab fa-github"></i> Le projet sur GitHub</a><br>
+                    <a href="https://colorjs.readthedocs.io/fr/latest/"><i class="fa fa-book"></i> La documentation en français</a>
                 </p>
             </div>
         </div>
-        <div id="slide1" style="background-color: #2993ad;" class="cjs-slide bottom">
+        <div class="cjs-slide bottom" style="background-color: rgb(148, 74, 177);">
+            <div class="slidecontent" style="font-size: 80%;">
+                <h1>Mais pourquoi un diaporama en HTML/CSS ?</h1>
+                <p>
+                    C'est vrai ça ! Pourquoi ne pas utiliser Powerpoint ?
+                </p>
+                <p>
+                    En effet pour le moment ColorJS ne dispose pas d'interface graphique. L'utiliser demande des bases en codage (qui restent plutôt simples). En revanche il a quelques avantages!
+                </p>
+                <p>
+                    Quelques avantages:
+                        Open-source
+                        Simple, pas de fonctionnalités inutiles
+                        Tourne dans n'importe quel navigateur récent, quel que soit le système
+                        Système de télécommande avec un autre appareil
+                </p>
+                <p>Pourquoi ne pas <a href="window.slideShow.next()">en découvrir un peu plus</a> ?</p>
+            </div>
+        </div>
+        <div style="background-color: #2993ad;" class="cjs-slide right push">
             <div class="slidecontent" >
                 <h1 class="simple" cjs-animate=0 style="transition-delay: 0.5s">Des transitions simples et fluides</h1>
-            <p class="zoom" cjs-animate=1> Chaque diapositive est définie par la classe <code>slide</code>. VOus pouvez ensuite y ajouter de simples transitions <br>
-                <br></p>
-                <h3 class="simple" cjs-animate=2>Comment utiliser les transitions ?</h3>
-                <p class="simple" cjs-animate=2>
-               Il suffit d'utiliser ces classes: <br>
-               <code>ibottom</code> pour une entrée depuis le bas <br>
-               <code>itop</code> pour une entrée depuis le haut<br>
-               <code>iright</code> pour une entrée depuis la droite<br>
-               <code>ileft</code> pour une entrée depuis la gauche<br>
-               <br>
-               De même pour les transitions sortantes:
-               <code>obottom</code>, <code>otop</code>, <code>oright</code> et <code>oleft</code>
-               <br>
-                "i" et "o" comme "In" et "Out" !
+                <p class="simple" style="transition-delay: 0.7s" cjs-animate="0">
+                    ColorJS est livré avec plusieurs transitions prédéfinies: simple cut, fondu, poussé, recouvrement. Simples mais efficaces !
                 </p>
             </div>
         </div>
-        <div id="slide2" style="background-color: #b24c4c;" class="cjs-slide right">
+        <div id="slide2" style="background-color: #35af9f;" class="cjs-slide fade">
             <div id="cslide21" class="slidecontent">
                 <h1 id="cslide22" class="simple" cjs-animate=0 style="transition-delay: 0.5s">Animations individuelles</h1>
                 <p id="cslide23" class="simple" cjs-animate=1 style="text-align: justify">
-                    Like in classic slideshow softwares (PowerPoint, Impress...), you can animate separately each element using CSS3 transform properties. <br>
-                    This feature has been designed to be simple and easy to use.
-                    <br>If you wand an element to have a separated animation, just add the <code>.animate</code> class on it. Then set this position when it's hidden: <br>
-                    <code>
-                        #element { <br></code>
-                    <code>   transform: /*transform property*/; <br></code>
-                     <code>   }
-                    </code>
-                    <br>
-                    Now use the <code>.current</code> class to define properties of the element when the slideshow is on the slide: <br>
-                    <code>
-                        #element.current { <br>
-                            tranform: /*changed property*/ <br>
-                        }
-                    </code><br>
-                    That's it!
-                    <br>
-                    <strong>Note:</strong> you can animate any CSS property but it's recommended to use <code>transform</code> properties.
+                    Chaque élément peut être animé séparément. Dans ce cas un changement de slide fera apparaître l'élément. <a href="javascript:window.slideShow.next()">Essayez !</a>
+                </p>
+                <p class="simple" cjs-animate="1">
+                    Et voilà ! Ce bloc de texte apparaît au moment où vous appuyez, et pas avant !
                 </p>
             </div>
         </div>
-        <div id="slide3" style="background-color: #dea454;" class="cjs-slide bottom">
+        <div id="slide3" style="background-color: #de5454;" class="cjs-slide left cover">
             <div class="slidecontent">
-                <h1>Slide #3</h1>
-            Lorem ipsum dolo sir amet. <br>
-            Ce descripteur définit un nom qui sera utilisé pour désigner cette police dans les différentes règles associées.
-            </div>
-        </div>
-        <div id="slide4" style="background-color: #5eb9b2;" class="cjs-slide left">
-            <div class="slidecontent">
-                <h1>Slide #4</h1>
-            </div>
-        </div>
-        <div id="slide5" style="background-color: #7d5eb9;" class="cjs-slide top">
-            <div class="slidecontent">
-                <h1>Slide #5</h1>
-            Lorem ipsum dolo sir amet. <br>
-            Ce descripteur définit un nom qui sera utilisé pour désigner cette police dans les différentes règles associées.
-            </div>
-        </div>
-        <div id="slide6" style="background-color: #52b45e;" class="cjs-slide right">
-            <div class="slidecontent">
-                <h1>Slide #6</h1>
-            Lorem ipsum dolo sir amet. <br>
-            Ce descripteur définit un nom qui sera utilisé pour désigner cette police dans les différentes règles associées.
-            </div>
-        </div>
-        <div id="slide7" style="background-color: #d676ae;" class="cjs-slide bottom">
-            <div class="slidecontent">
-                <h1>Slide #7</h1>
-            Lorem ipsum dolo sir amet. <br>
-            Ce descripteur définit un nom qui sera utilisé pour désigner cette police dans les différentes règles associées.
+                <h1>Comment utiliser ColorJS ?</h1>
+                <p>
+                    Une documentation/guide de démarrage est disponible <a href="https://colorjs.readthedocs.io/fr/latest/">ici</a>. Vous y trouverez les étapes nécessaires pour démarrer.
+                </p>
+                <p>Utiliser ColorJS n'est pas compliqué! Quelques connaissances de base en HTML/CSS suffisent.</p>
+                <p>Bonnes présentations !</p>
             </div>
         </div>
      </div>
