@@ -21,6 +21,7 @@ createElements().then(() => {
     Generate.global(slideShow)
     if (slideShow.slider.getAttribute('speech-control') !== null) {
         speechControl.init(slideShow)
+        slideShow.bindSpeech(slideShow.allSlides[slideShow.currentSlide])
     }
     Nav.init(slideShow)
     // Remote.init(slideShow) //facultatif
