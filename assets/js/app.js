@@ -4,6 +4,7 @@ import Nav from './modules/nav'
 import Generate from './modules/generate'
 import EventListeners from './modules/eventListeners'
 import CssRules from './modules/cssrules'
+import speechControl from './modules/speechControl'
 
 createElements().then(() => {
     CssRules.init()
@@ -18,6 +19,9 @@ createElements().then(() => {
         'remoteState': 0,
     }
     Generate.global(slideShow)
+    if (slideShow.slider.getAttribute('speech-control') !== null) {
+        speechControl.init(slideShow)
+    }
     Nav.init(slideShow)
     // Remote.init(slideShow) //facultatif
 
