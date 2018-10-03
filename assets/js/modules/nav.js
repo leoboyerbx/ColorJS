@@ -22,6 +22,7 @@ class Nav {
                         this.allSlides[this.currentSlide].classList.remove('current')
                         this.currentSlide++;
                         this.setPoint(this.currentSlide)
+                        slideShow.recognition.abort()
                         this.bindSpeech(this.allSlides[this.currentSlide])
                     }
                     if (e.tagName == "VIDEO" && e.getAttribute('cjs-autoplay') == "true") {
@@ -29,7 +30,7 @@ class Nav {
                         
                     }
                 }
-                this.currentAnimate++;
+                this.currentAnimate++
             }
         }
     }
@@ -55,6 +56,7 @@ class Nav {
                             this.allSlides[this.currentSlide - 1].classList.remove('prev')
                             this.currentSlide--;
                             this.setPoint(this.currentSlide)
+                            this.bindSpeech(this.allSlides[this.currentSlide])
                         }
         
                     }
