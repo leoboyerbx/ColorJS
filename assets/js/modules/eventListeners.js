@@ -44,6 +44,9 @@ class EventListeners {
             else if (ev.keyCode == 115) {
                 slideShow.globalView();
             }
+            else if (ev.key == "v") {
+                slideShow.relanchSpeechRec()
+            }
             else if (ev.keyCode == 35) {
                 slideShow.goto(slideShow.allSlides.length-1);
             }

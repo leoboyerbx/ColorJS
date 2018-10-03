@@ -19,9 +19,10 @@ createElements().then(() => {
         'remoteState': 0,
     }
     Generate.global(slideShow)
-    if (slideShow.slider.getAttribute('speech-control') !== null) {
-        speechControl.init(slideShow)
-        slideShow.bindSpeech(slideShow.allSlides[slideShow.currentSlide])
+    let speechLang = slideShow.slider.getAttribute('speech-lang')
+    if (speechLang) {
+        speechControl.init(slideShow, speechLang)
+        slideShow.bindSpeech(slideShow.allSlides[0])
     }
     Nav.init(slideShow)
     // Remote.init(slideShow) //facultatif
