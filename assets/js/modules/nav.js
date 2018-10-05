@@ -6,12 +6,10 @@ class Nav {
      * @param {Object} slideShow 
      */
     static init(slideShow) {
-        slideShow.next = function(bypass) {
-        if (this.remoteState === 1 && !bypass) {
-            let xhr = new XMLHttpRequest();
-            xhr.open('GET', './remote/changestate.php?set=' + (this.currentAnimate + 1), true)
-            xhr.send()
-        } else {
+        let nextEvent = new Event('cjsNext')
+        let prevEvent = new Event('cjsPrev')
+
+        slideShow.next = function() {
             let animElements = qS('[anim-data="' + parseInt(this.currentAnimate + 1) + '"]', true)
             if (animElements) {
                 for(let i = 0; i < animElements.length; i++) {
@@ -25,12 +23,11 @@ class Nav {
                     }
                     if (e.tagName == "VIDEO" && e.getAttribute('cjs-autoplay') == "true") {
                         e.play()
-                        
                     }
                 }
                 this.currentAnimate++;
+                slideShow.slider.dispatchEvent(nextEvent)
             }
-        }
     }
 
         slideShow.prev = function(bypass) {
@@ -38,27 +35,22 @@ class Nav {
                 return false;
         
             } else {
-                if (this.remoteState === 1 && !bypass) {
-                    let xhr = new XMLHttpRequest();
-                    xhr.open('GET', './remote/changestate.php?set=' + (this.currentAnimate - 1), true)
-                    xhr.send()
-                } else {
-                    let animElements = qS('[anim-data="' + parseInt(this.currentAnimate) + '"]', true)
-        
-                    for(let i = 0; i < animElements.length; i++) {
-                        let e = animElements[i]
-                        e.classList.remove('current')
-        
-                        if (e.classList.contains('cjs-slide')) {
-                            this.allSlides[this.currentSlide - 1].classList.add('current')
-                            this.allSlides[this.currentSlide - 1].classList.remove('prev')
-                            this.currentSlide--;
-                            this.setPoint(this.currentSlide)
-                        }
-        
+                let animElements = qS('[anim-data="' + parseInt(this.currentAnimate) + '"]', true)
+    
+                for(let i = 0; i < animElements.length; i++) {
+                    let e = animElements[i]
+                    e.classList.remove('current')
+    
+                    if (e.classList.contains('cjs-slide')) {
+                        this.allSlides[this.currentSlide - 1].classList.add('current')
+                        this.allSlides[this.currentSlide - 1].classList.remove('prev')
+                        this.currentSlide--;
+                        this.setPoint(this.currentSlide)
                     }
-                    this.currentAnimate--;
+    
                 }
+                this.currentAnimate--
+                slideShow.slider.dispatchEvent(prevEvent)
             }
         }
 
