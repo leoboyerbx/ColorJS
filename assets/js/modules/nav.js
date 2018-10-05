@@ -30,7 +30,7 @@ class Nav {
             }
     }
 
-        slideShow.prev = function(bypass) {
+        slideShow.prev = function() {
             if (this.currentAnimate === 0) { //évite de chercher à dépasser le nombre de slides
                 return false;
         
