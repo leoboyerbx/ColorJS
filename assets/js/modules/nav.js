@@ -20,6 +20,7 @@ class Nav {
                         this.allSlides[this.currentSlide].classList.remove('current')
                         this.currentSlide++;
                         this.setPoint(this.currentSlide)
+                        this.bindSpeech(this.allSlides[this.currentSlide])
                     }
                     if (e.tagName == "VIDEO" && e.getAttribute('cjs-autoplay') == "true") {
                         e.play()
