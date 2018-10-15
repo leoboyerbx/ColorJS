@@ -31,7 +31,9 @@ class Sync {
             })
         }
         slideShow.enableSync = function() {
-            let socket = io.connect('https://colorjs-server-leoboyerbx.c9users.io')
+            let customServ = slideShow.slider.getAttribute('cjs-sync-server')
+            let server = customServ ? customServ : "http://sync-colorjs.cf"
+            let socket = io.connect(server)
             socket.emit('config', {"id": syncId})
             setRemoteEventListeners(socket)
         }
