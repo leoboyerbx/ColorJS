@@ -19,7 +19,10 @@ createElements().then(() => {
         'remoteState': 0,
     }
     Generate.global(slideShow)
-    Sync.init(slideShow)
+    let syncId = slideShow.slider.getAttribute('cjs-sync-id')
+    if (syncId) {
+        Sync.init(slideShow, syncId)
+    }
 
     Nav.init(slideShow)
     // Remote.init(slideShow) //facultatif

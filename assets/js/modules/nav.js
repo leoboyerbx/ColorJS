@@ -6,12 +6,8 @@ class Nav {
      * @param {Object} slideShow 
      */
     static init(slideShow) {
-        slideShow.next = function(bypass) {
-        if (this.remoteState === 1 && !bypass) {
-            let xhr = new XMLHttpRequest();
-            xhr.open('GET', './remote/changestate.php?set=' + (this.currentAnimate + 1), true)
-            xhr.send()
-        } else {
+
+        slideShow.next = function(emitEvent = true) {
             let animElements = qS('[anim-data="' + parseInt(this.currentAnimate + 1) + '"]', true)
             if (animElements) {
                 for(let i = 0; i < animElements.length; i++) {
@@ -22,45 +18,39 @@ class Nav {
                         this.allSlides[this.currentSlide].classList.remove('current')
                         this.currentSlide++;
                         this.setPoint(this.currentSlide)
-                        this.bindSpeech(this.allSlides[this.currentSlide])
                     }
                     if (e.tagName == "VIDEO" && e.getAttribute('cjs-autoplay') == "true") {
                         e.play()
-                        
                     }
                 }
-                this.currentAnimate++
+                this.currentAnimate++;
+                let nextEvent = new CustomEvent("cjsSwitch", {'detail' : {'direction': 'next', 'emitEvent': emitEvent}})
+                slideShow.slider.dispatchEvent(nextEvent)
             }
-        }
     }
 
-        slideShow.prev = function(bypass) {
+        slideShow.prev = function(emitEvent = true) {
             if (this.currentAnimate === 0) { //évite de chercher à dépasser le nombre de slides
                 return false;
         
             } else {
-                if (this.remoteState === 1 && !bypass) {
-                    let xhr = new XMLHttpRequest();
-                    xhr.open('GET', './remote/changestate.php?set=' + (this.currentAnimate - 1), true)
-                    xhr.send()
-                } else {
-                    let animElements = qS('[anim-data="' + parseInt(this.currentAnimate) + '"]', true)
-        
-                    for(let i = 0; i < animElements.length; i++) {
-                        let e = animElements[i]
-                        e.classList.remove('current')
-        
-                        if (e.classList.contains('cjs-slide')) {
-                            this.allSlides[this.currentSlide - 1].classList.add('current')
-                            this.allSlides[this.currentSlide - 1].classList.remove('prev')
-                            this.currentSlide--;
-                            this.setPoint(this.currentSlide)
-                            this.bindSpeech(this.allSlides[this.currentSlide])
-                        }
-        
+                let animElements = qS('[anim-data="' + parseInt(this.currentAnimate) + '"]', true)
+    
+                for(let i = 0; i < animElements.length; i++) {
+                    let e = animElements[i]
+                    e.classList.remove('current')
+    
+                    if (e.classList.contains('cjs-slide')) {
+                        this.allSlides[this.currentSlide - 1].classList.add('current')
+                        this.allSlides[this.currentSlide - 1].classList.remove('prev')
+                        this.currentSlide--;
+                        this.setPoint(this.currentSlide)
                     }
-                    this.currentAnimate--;
+    
                 }
+                this.currentAnimate--
+                let prevEvent = new CustomEvent("cjsSwitch", {'detail' : {'direction': 'prev', 'emitEvent': emitEvent}})
+                slideShow.slider.dispatchEvent(prevEvent)
             }
         }
 
@@ -72,18 +62,15 @@ class Nav {
                 let end = parseInt(this.allSlides[num].getAttribute('anim-data'))
                 while (this.currentAnimate != end) {
                     if (start - end < 0) {
-                        this.next(1)
+                        this.next(false)
                     }
                     else {
-                        this.prev(1)
+                        this.prev(false)
                     }
                 }
                 this.currentSlide = num;
-                if(this.remoteState === 1) {
-                    let xhr = new XMLHttpRequest();
-                    xhr.open('GET', './remote/changestate.php?set=' + (this.currentAnimate), true)
-                    xhr.send()
-                }
+                let goingTo = new CustomEvent("cjsGoto", {'detail' : {'slideNum': num}})
+                slideShow.slider.dispatchEvent(goingTo)
             }
         }
 
@@ -95,10 +82,10 @@ class Nav {
                 let end = num
                 while (this.currentAnimate != end) {
                     if (start - end < 0) {
-                        this.next(this, 1)
+                        this.next(false)
                     }
                     else {
-                        this.prev(this, 1)
+                        this.prev(false)
                     }
                 }
             }

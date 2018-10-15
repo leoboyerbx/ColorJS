@@ -32,7 +32,6 @@ export default function () {
         <span class="fa fa-caret-right" onclick="window.slideShow.next()"></span>
         <span class="fa fa-fast-forward" onclick="window.slideShow.goto(window.slideShow.allSlides.length - 1)"></span>
         <span class="fa fa-print" onclick="window.slideShow.print()"></span>
-        <span class="fa fa-wifi" id="remote" onclick="window.slideShow.remote.start();" style="display: none"></span>
        </span>`
        body.insertAfter(ui, points)
 
