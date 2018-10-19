@@ -174,7 +174,8 @@ header.cjs-header {
     font-size: 180%;
     -webkit-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
-    transition: all 0.4s ease;  
+    transition: all 0.4s ease;
+    overflow: hidden;
 }
 #cjs-interface.material {
     padding-left: 30px;
@@ -218,6 +219,7 @@ header.cjs-header {
     margin: 0;
     padding: 0;
 }
+
 
 .notransition {
     transition: none;

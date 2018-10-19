@@ -30,18 +30,35 @@ class Sync {
                 socket.emit('goto', e.detail.slideNum)
             })
         }
+        let socket
         slideShow.enableSync = function() {
+            remoteButton.classList.remove('fa-wifi')
+            remoteButton.classList.add('fa-exchange-alt')
             let customServ = slideShow.slider.getAttribute('cjs-sync-server')
-            let server = customServ ? customServ : "http://sync-colorjs.cf"
-            let socket = io.connect(server)
+            let server = customServ ? customServ : "https://sync-colorjs.cf:443"
+            socket = io.connect(server)
             socket.emit('config', {"id": syncId})
             setRemoteEventListeners(socket)
+            slideShow.isConnected = true
+        }
+        slideShow.disableSync = function () {
+            remoteButton.classList.remove('fa-wifi')
+            remoteButton.classList.add('fa-exchange-alt')
+            socket.disconnect()
+            slideShow.isConnected = false
+        }
+        slideShow.toggleSync = function () {
+            if (slideShow.isConnected) {
+                slideShow.disableSync()
+            } else {
+                slideShow.enableSync()
+            }
         }
         
         let remoteButton = document.createElement('span')
         remoteButton.classList.add('fa', 'fa-wifi')
         qS('#cjs-control').appendChild(remoteButton)
-        remoteButton.addEventListener('click', () => slideShow.enableSync())
+        remoteButton.addEventListener('click', () => slideShow.toggleSync())
         
     }
 }
