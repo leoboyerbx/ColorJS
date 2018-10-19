@@ -15,5 +15,8 @@
     "cross-env": "^5.2.0",
     "webpack": "^4.17.1",
     "webpack-command": "^0.4.1"
+  },
+  "dependencies": {
+    "socket.io-client": "^2.1.1"
   }
 }

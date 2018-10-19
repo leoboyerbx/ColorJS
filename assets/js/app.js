@@ -4,6 +4,7 @@ import Nav from './modules/nav'
 import Generate from './modules/generate'
 import EventListeners from './modules/eventListeners'
 import CssRules from './modules/cssrules'
+import Sync from './modules/sync'
 
 createElements().then(() => {
     CssRules.init()
@@ -18,6 +19,11 @@ createElements().then(() => {
         'remoteState': 0,
     }
     Generate.global(slideShow)
+    let syncId = slideShow.slider.getAttribute('cjs-sync-id')
+    if (syncId) {
+        Sync.init(slideShow, syncId)
+    }
+
     Nav.init(slideShow)
     // Remote.init(slideShow) //facultatif
 
