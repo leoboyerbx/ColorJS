@@ -14,8 +14,8 @@ createElements().then(() => {
         'scrolling': 0,
         'currentSlide': 0,
         'currentAnimate': 0,
-        'allSlides': qS('.cjs-slide'),
-        'allAnimate': document.querySelectorAll('[anim-data]'),
+        'allSlides': qS('.cjs-slide', true),
+        'allAnimate': qS('[anim-data]', true),
         'remoteState': 0,
     }
     Generate.global(slideShow)

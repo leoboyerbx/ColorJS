@@ -123,6 +123,20 @@ const generateTranstions = function (slideShow) {
     }
 }
 
+let generateMask = function(slideShow) {
+    //-- mask
+    let maskModel = slideShow.slider.querySelector('.cjs-mask')
+    if (maskModel && !maskModel.classList.contains('fixed')) {
+        slideShow.allSlides.forEach(slide => {
+            if (!slide.classList.contains('no-mask')) {
+                let localMask = maskModel.cloneNode(true)
+                localMask.classList.add('generated')
+                slide.insertBefore(localMask, slide.firstChild)
+            }
+        })
+    }
+}
+
 class Generate {
     /**
      * Fonction qui g&nère les points, les thumbnails et les AnimData
@@ -133,6 +147,7 @@ class Generate {
         generateThumbnails(slideShow)
         generateTranstions(slideShow)
         generateAnimData(slideShow)
+        generateMask(slideShow)
     }
 
     /**

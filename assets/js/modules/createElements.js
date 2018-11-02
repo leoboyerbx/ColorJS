@@ -1,4 +1,4 @@
-import querySelector from "./querySelector";
+import qS from "./querySelector";
 
 export default function () {
     Node.prototype.insertAfter = function (newNode, referenceNode) {
@@ -6,7 +6,7 @@ export default function () {
     }
     return new Promise ((resolve, reject) => {
         let body = document.body
-        let slider = body.querySelector('#cjs-slider')
+        let slider = qS('#cjs-slider')
         //-- Thumbnails for global view
         let globalView = document.createElement('div')
         globalView.id = "globalview"
@@ -34,6 +34,7 @@ export default function () {
         <span class="fa fa-print" onclick="window.slideShow.print()"></span>
        </span>`
        body.insertAfter(ui, points)
+
 
         resolve()
     })

@@ -225,7 +225,21 @@ header.cjs-header {
     transition: none;
 }
 
-
+.cjs-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+.cjs-mask.generated {
+    display: block;
+}
+.cjs-mask.fixed {
+    display: block;
+    position: fixed;
+}
 
 
 /* ======================== Slide Properties =============== */
