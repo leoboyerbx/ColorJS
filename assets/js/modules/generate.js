@@ -127,10 +127,25 @@ let generateMask = function(slideShow) {
     //-- mask
     let maskModel = slideShow.slider.querySelector('.cjs-mask')
     if (maskModel && !maskModel.classList.contains('fixed')) {
-        slideShow.allSlides.forEach(slide => {
+        let currentPart = "Part Title";
+        let currentDate = new Date()
+        slideShow.allSlides.forEach((slide, index) => {
             if (!slide.classList.contains('no-mask')) {
                 let localMask = maskModel.cloneNode(true)
                 localMask.classList.add('generated')
+
+                localMask.innerHTML = localMask.innerHTML.replace(/\${pageNbr}/g,index+1)
+                
+                let newPart = slide.getAttribute('cjs-part-title')
+                if(newPart) {
+                    currentPart = newPart
+                }
+                localMask.innerHTML = localMask.innerHTML.replace(/\${partTitle}/g, currentPart)
+                localMask.innerHTML = localMask.innerHTML.replace(/\${date}/g, currentDate.toLocaleDateString())
+                localMask.innerHTML = localMask.innerHTML.replace(/\${fullFRDate}/g, currentDate.toLocaleDateString('fr-FR',{weekday: "long", year: "numeric", month: "long", day: "numeric"}))
+                localMask.innerHTML = localMask.innerHTML.replace(/\${fullENDate}/g, currentDate.toLocaleDateString('en-UK',{weekday: "long", year: "numeric", month: "long", day: "numeric"}))
+                
+
                 slide.insertBefore(localMask, slide.firstChild)
             }
         })
