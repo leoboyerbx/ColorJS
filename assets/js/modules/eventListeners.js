@@ -47,6 +47,10 @@ class EventListeners {
             else if (ev.keyCode == 35) {
                 slideShow.goto(slideShow.allSlides.length-1);
             }
+            else if (ev.key == "r") {
+                ev.preventDefault()
+                window.location.href="./force-ratio.html"
+            }
             slideShow.allPoints[slideShow.currentSlide].classList.add('select');
             
         })
