@@ -1,5 +1,16 @@
 import qS from "./querySelector";
 
+let parseDataSlideshow = function(dataString) {
+    let parser = new DOMParser()
+    let content = parser.parseFromString(dataString, "text/html")
+    let slides = content.querySelector('slider')
+    if (slides) {
+       return slides.innerHTML
+   } else {
+       return null
+   }
+}
+
 export default function () {
     Node.prototype.insertAfter = function (newNode, referenceNode) {
         this.insertBefore(newNode, referenceNode.nextSibling)
@@ -35,7 +46,27 @@ export default function () {
        </span>`
        body.insertAfter(ui, points)
 
-
-        resolve()
+        let fileInput = qS('#cjs-file-input')
+        if (fileInput) {
+            fileInput.addEventListener('change', e => {
+                let file = e.target.files[0]
+                if (!file) {
+                    reject("No file specified")
+                } else {
+                    let reader = new FileReader()
+                    reader.addEventListener('load', e => {
+                        let parsedSlides = parseDataSlideshow(e.target.result)
+                        if (parsedSlides) {
+                            slider.innerHTML = parsedSlides
+                            resolve()
+                        }
+    
+                    })
+                    reader.readAsText(file)
+                }
+            })
+        } else {
+            resolve()
+        }
     })
 }

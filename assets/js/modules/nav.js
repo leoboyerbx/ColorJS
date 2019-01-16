@@ -6,7 +6,7 @@ class Nav {
      * @param {Object} slideShow 
      */
     static init(slideShow) {
-
+        
         slideShow.next = function(emitEvent = true) {
             let animElements = qS('[anim-data="' + parseInt(this.currentAnimate + 1) + '"]', true)
             if (animElements) {

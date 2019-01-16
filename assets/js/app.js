@@ -6,9 +6,7 @@ import EventListeners from './modules/eventListeners'
 import CssRules from './modules/cssrules'
 import Sync from './modules/sync'
 
-createElements().then(() => {
-    CssRules.init()
-
+createElements().then(() => {    
     let slideShow = window.slideShow = {
         'slider': qS('#cjs-slider'),
         'scrolling': 0,
@@ -18,17 +16,14 @@ createElements().then(() => {
         'allAnimate': qS('[anim-data]', true),
         'remoteState': 0,
     }
+    Generate.generate(slideShow)
+    CssRules.init()
+
     Generate.global(slideShow)
     let syncId = slideShow.slider.getAttribute('cjs-sync-id')
     if (syncId) {
         Sync.init(slideShow, syncId)
     }
-
     Nav.init(slideShow)
-    // Remote.init(slideShow) //facultatif
-
-    document.addEventListener('DOMContentLoaded', () => {
-        Generate.generate(slideShow)
-        EventListeners.init(slideShow)
-    })
+    EventListeners.init(slideShow)
 })

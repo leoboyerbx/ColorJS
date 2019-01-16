@@ -7,9 +7,9 @@ class EventListeners {
             ev.preventDefault(); //on empêche de retester l'événement
             slideShow.scrolling = ev.deltaY; //on récupère la valeur de scrolling
             if (slideShow.scrolling > 0) { //si le scrolling est vers le bas, on appelle nextslide()
-                slideShow.next();
+                slideShow.next()
             } else { //si le scrolling est vers le haut, on appelle prevslide()
-                slideShow.prev();
+                slideShow.prev()
             }
             slideShow.allPoints[slideShow.currentSlide].classList.add('select');
         });
