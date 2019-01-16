@@ -152,6 +152,16 @@ let generateMask = function(slideShow) {
     }
 }
 
+let download = function(filename, text) {
+    let element = document.createElement('a')
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text))
+    element.setAttribute('download', filename)
+    element.style.display = 'none'
+    document.body.appendChild(element)
+    element.click()
+    document.body.removeChild(element);
+  }
+
 class Generate {
     /**
      * Fonction qui g&nère les points, les thumbnails et les AnimData
@@ -185,6 +195,14 @@ class Generate {
                 e.classList.remove('select')
             })
             this.allPoints[value].classList.add('select')
+        }
+        slideShow.save = function () {
+            let data = slideShow.virtualSlider.innerHTML
+            data = `<?xml version="1.0" encoding="UTF-8"?>
+<slider>
+    ` + data + `
+</slider>`
+            download('colorjs.xml', data)
         }
     }
 }

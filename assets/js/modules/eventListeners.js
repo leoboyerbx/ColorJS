@@ -58,7 +58,11 @@ class EventListeners {
             if(ev.ctrlKey && ev.keyCode == 80){
                 ev.preventDefault()
                 slideShow.print()
-        }
+            }
+            if(ev.ctrlKey && ev.keyCode == 83){
+                ev.preventDefault()
+                slideShow.save()
+            }
         })
         
         let sliderHammer = new Hammer(slideShow.slider)

@@ -1,20 +1,23 @@
 import qS from './modules/querySelector'
 import createElements from './modules/createElements'
+import VirtualSlider from './modules/virtualSlider'
 import Nav from './modules/nav'
 import Generate from './modules/generate'
 import EventListeners from './modules/eventListeners'
 import CssRules from './modules/cssrules'
 import Sync from './modules/sync'
 
-createElements().then(() => {    
+createElements().then(() => {
+    let slider = qS('#cjs-slider')
     let slideShow = window.slideShow = {
-        'slider': qS('#cjs-slider'),
+        'slider': slider,
+        'virtualSlider': VirtualSlider.create(slider),
         'scrolling': 0,
         'currentSlide': 0,
         'currentAnimate': 0,
         'allSlides': qS('.cjs-slide', true),
         'allAnimate': qS('[anim-data]', true),
-        'remoteState': 0,
+        'remoteState': 0
     }
     Generate.generate(slideShow)
     CssRules.init()
