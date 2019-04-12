@@ -1,17 +1,25 @@
 # ColorJS
-A simple JS librairy to create slideshows in HTML/CSS
 
-ColorJS is a JS library that you can use to create animated slideshows writing HTML and CSS only. It speeds up the creation process.
->Please note that this project is still in development and that I am not a professionnal developer, so there are still a lot of issues that I'm trying to resolve.
+Une simple librairie pour créer des diaporamas en HTML/CSS
 
->Anyway, the library is already avaliable to use and works good ! I used it for all of my final exams presentations.
+ColorJS est une librairie JS que vous pouvez utiliser pour créer des diaporamas animés, simplement en tapant du HTML et du CSS. La librairie se charge d'accélérer le processus de création.
 
-## How it works
-ColorJS works by analysing the DOM and animating each element with the class `slide` and the attribute `animate`. The script itself just adds and removes classes to make the animation progress.
->Whaaat ? Didn't understand
+> Merci de noter que le projet en est à ses balbutiements et que je ne suis pas un professionnel (je suis étudiant). Il reste donc des erreurs et de nombreuses fonctions sont manquantes.
+> 
+> Cependant la librairie est déjà utilisable et fonctionne pour un usage simple !  Je l'ai utilisée pour tous mes diaporamas nécessaires à certaines épreuves du Bac.
 
-For example if you have only 3 `div` with the class `slide` in your HTML document, the script will add it to the list of animated elements and will animate them in the order they appear in the code.
+## Comment ça fonctionne
 
-Now if you want an element to appear only when you want, you can add the attribute `animate=1` for example, and the script will make this element appear at the first click after the begenning of the slide.
+ColorJS se charge d'importer les styles nécessaires pour la mise en page du diaporama. Ensuite il fait correspondre des actions clavier à des ajouts/suppressions de classes pour faire progresser l'animation.
 
-## How to use it
+>  Whaaat ? J'ai pas compris...
+
+Par exemple, si vous avez simplement 3 `div`avec la classe `cjs-slide` (des diapositives colorJS, donc) dans votre document HTML, le script va ajouter chacun de ces divs à la liste des éléments animés et va les animer dans l'ordre où ils apparaissent dans le code.
+
+Pour laisser un maximum de flexibilité, le script ajout la classe `current` à la slide en cours et la classe `prev`à toutes les slides déjà passées. Ainsi vous pouvez choisir sur quelles propriétés CSS les changements s'appliquent.
+
+Si vous voulez qu'un élément apparaisse seulement à un moment précis, vous pouvez lui ajouter l'attribut `cjs-animate`
+
+## Comment utiliser ColorJS
+
+Tout est détaillé sur [la documentation](https://colorjs.readthedocs.io/fr/latest/)
