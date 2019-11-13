@@ -14,7 +14,7 @@ class CssRules {
     if (existingStyleSheet) {
       qS('head').insertBefore(importCss('assets/colorjs.bundle.css'), existingStyleSheet)
     } else {
-      qS('head').appendChild(importCss('assets/colorjs.css'))
+      qS('head').appendChild(importCss('assets/colorjs.bundle.css'))
     }
   }
 }
