@@ -88,7 +88,7 @@ let config = {
         ]
     },
     output: {
-        path: path.resolve(__dirname, 'public/assets'),
+        path: path.resolve(__dirname, 'dist/assets'),
         filename: '[name].bundle.js'
     }
 
