@@ -35,7 +35,7 @@ class Sync {
       remoteButton.classList.remove('fa-wifi')
       remoteButton.classList.add('fa-exchange-alt')
       const customServ = slideShow.slider.getAttribute('cjs-sync-server')
-      const server = customServ || 'https://sync-colorjs.cf:443'
+      const server = customServ || 'https://sync.colorjs.cc:443'
       socket = io.connect(server)
       socket.emit('config', { id: syncId })
       setRemoteEventListeners(socket)
