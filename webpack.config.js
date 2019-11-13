@@ -1,6 +1,8 @@
 /* eslint-disable */
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
 const dev = process.env.NODE_ENV === "dev"
 
 let styleLoaders = [
@@ -12,6 +14,13 @@ let styleLoaders = [
     },
     'css-loader'
 ]
+
+let plugins = [
+    new MiniCssExtractPlugin({
+        filename: "colorjs.bundle.css"
+    })
+]
+if (!dev) plugins.push(new CleanWebpackPlugin())
 
 let config = {
     entry: {
@@ -26,12 +35,8 @@ let config = {
         }
     },
     watch: dev,
-    mode: 'development',
-    plugins: [
-        new MiniCssExtractPlugin({
-            filename: "colorjs.bundle.css"
-        })
-    ],
+    mode: dev ? 'development' : 'production',
+    plugins: plugins,
     devtool: dev ? "cheap-module-eval-source-map" : "source-map",
     module: {
         rules: [
