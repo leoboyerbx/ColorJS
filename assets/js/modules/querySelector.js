@@ -5,12 +5,12 @@
  * @returns {(HTMLElement|NodeList)} Element ou liste d'éléments si plusieurs
  */
 export default function (query, forceNodeList = false) {
-    let result = document.querySelectorAll(query)
-    if (!result[0]) {
-        return null
-    } else if (result.length === 1 && !forceNodeList) {
-        return result[0]
-    } else {
-        return result
-    }
+  const result = document.querySelectorAll(query)
+  if (!result[0]) {
+    return null
+  } else if (result.length === 1 && !forceNodeList) {
+    return result[0]
+  } else {
+    return result
+  }
 }

@@ -1,3 +1,5 @@
+@import '../fontawesome/css/fontawesome-all.min.css';
+
 html body {
     margin: 0;
     padding: 0;
@@ -131,7 +133,7 @@ header.cjs-header {
     transform: translateY(-50%);
     -webkit-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
-    transition: all 0.4s ease;  
+    transition: all 0.4s ease;
 }
 #cjs-points.hidden {
     -webkit-transform: translate(-100px, -50%);
@@ -143,7 +145,7 @@ header.cjs-header {
     -webkit-transform: translateX(-100px);
     -ms-transform: translateX(-100px);
     -o-transform: translateX(-100px);
-    transform: translateX(-100px); 
+    transform: translateX(-100px);
 }
 
 .cjs-point {
@@ -205,7 +207,7 @@ header.cjs-header {
 #cjs-control {
     -webkit-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
-    transition: all 0.2s ease; 
+    transition: all 0.2s ease;
 }
 #cjs-control.globalview {
     font-size: 0;
@@ -261,7 +263,7 @@ header.cjs-header {
     transform: translate(0,100%);
 }
 
-.cjs-slide.otop.prev {    
+.cjs-slide.otop.prev {
     -webkit-transform: translate(0, -20%);
     -ms-transform: translate(0, -20%);
     -o-transform: translate(0, -20%);
@@ -326,7 +328,7 @@ header.cjs-header {
 /*=============== Push===============*/
 /*=============== ↑ Bottom to top ↑ ===============*/
 
-.cjs-slide.opushtop.prev {    
+.cjs-slide.opushtop.prev {
     -webkit-transform: translate(0, -100%);
     -ms-transform: translate(0, -100%);
     -o-transform: translate(0, -100%);
@@ -427,7 +429,7 @@ header.cjs-header {
      -o-transition: all 0.3s ease-out;
      transition: all 0.3s ease-out;
  }
- 
+
  [cjs-animate].simple.current {
      -webkit-transform: translateX(0);
      -ms-transform: translateX(0);
@@ -485,3 +487,7 @@ header.cjs-header {
 [cjs-animate].zoom.current {
     transform: scale(1);
 }
+
+
+
+@import './print.css';
