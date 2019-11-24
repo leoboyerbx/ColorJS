@@ -1,4 +1,5 @@
 import qS from './querySelector'
+import getUuid from 'uuid-by-string'
 
 export default function () {
   // eslint-disable-next-line no-undef
@@ -36,6 +37,9 @@ export default function () {
        </span>`
     body.insertAfter(ui, points)
 
+    if (slider.getAttribute('cjs-sync') !== null && slider.getAttribute('cjs-sync-id') === null) {
+      slider.setAttribute('cjs-sync-id', getUuid(slider.innerHTML))
+    }
     resolve()
   })
 }
