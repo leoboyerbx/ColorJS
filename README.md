@@ -28,7 +28,7 @@ Si vous voulez qu'un élément apparaisse seulement à un moment précis, vous p
 
 ### Exemple de fichier diaporama
 
-```markup
+```html
 <!DOCTYPE html>
 <html>
 <head>
