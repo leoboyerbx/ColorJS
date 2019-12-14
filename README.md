@@ -35,7 +35,7 @@ Si vous voulez qu'un élément apparaisse seulement à un moment précis, vous p
     <meta charset="utf-8" />
     <title>Titre de mon diaporama</title>
     
-    <script defer src="path/to/colorjs.bundle.js">
+    <script defer src="path/to/colorjs.bundle.js"></script>
 </head>
 <body>
     <div id="cjs-slider">
