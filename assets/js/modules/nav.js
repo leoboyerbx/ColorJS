@@ -1,14 +1,23 @@
 import qS from './querySelector'
 
+let isAnimating = false
+
 class Nav {
   /**
      * Initialiser les fonctions de navigation
      * @param {Object} slideShow
      */
   static init (slideShow) {
+    function startAnimationLock () {
+      isAnimating = true
+      slideShow.afterAnimation(() => {
+        isAnimating = false
+      })
+    }
+
     slideShow.next = function (emitEvent = true) {
       const animElements = qS('[anim-data="' + parseInt(this.currentAnimate + 1) + '"]', true)
-      if (animElements) {
+      if (animElements && !isAnimating) {
         for (let i = 0; i < animElements.length; i++) {
           const e = animElements[i]
           e.classList.add('current')
@@ -23,6 +32,7 @@ class Nav {
           }
         }
         this.currentAnimate++
+        startAnimationLock()
         // eslint-disable-next-line no-undef
         const nextEvent = new CustomEvent('cjsSwitch', { detail: { direction: 'next', emitEvent: emitEvent } })
         slideShow.slider.dispatchEvent(nextEvent)
@@ -30,7 +40,7 @@ class Nav {
     }
 
     slideShow.prev = function (emitEvent = true) {
-      if (this.currentAnimate === 0) { // évite de chercher à dépasser le nombre de slides
+      if (this.currentAnimate === 0 || isAnimating) { // évite de chercher à dépasser le nombre de slides
         return false
       } else {
         const animElements = qS('[anim-data="' + parseInt(this.currentAnimate) + '"]', true)
@@ -47,6 +57,7 @@ class Nav {
           }
         }
         this.currentAnimate--
+        startAnimationLock()
         // eslint-disable-next-line no-undef
         const prevEvent = new CustomEvent('cjsSwitch', { detail: { direction: 'prev', emitEvent: emitEvent } })
         slideShow.slider.dispatchEvent(prevEvent)
