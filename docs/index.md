@@ -17,5 +17,5 @@ Now if you want an element to appear only when you want, you can add the attribu
 ## How to use it
 To learn how to create your slideshow, go on [readthedocs](https://colorjs.readthedocs.io/en/latest/) ;)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NTgwMTM2OTRdfQ==
+eyJoaXN0b3J5IjpbLTQyNDI1NTMyOCwtMTg1ODAxMzY5NF19
 -->
